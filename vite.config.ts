@@ -1,14 +1,15 @@
-import {fileURLToPath, URL} from 'url';
-import {defineConfig, loadEnv} from 'vite';
+import { fileURLToPath, URL } from 'url';
+import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import graphql from '@rollup/plugin-graphql'
 
 // https://vitejs.dev/config/
-export default defineConfig(({command, mode}) => {
+export default defineConfig(({ command, mode }) => {
 
   const env = loadEnv(mode, process.cwd(), '')
 
   return {
-    plugins: [vue()],
+    plugins: [vue(), graphql()],
     resolve: {
       define: {
         __APP_ENV__: env.APP_ENV

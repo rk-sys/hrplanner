@@ -1,0 +1,6 @@
+query AllBooks {
+    allBooks(search: "train") {
+        id
+        title
+    }
+}

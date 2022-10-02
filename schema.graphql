@@ -1,0 +1,57 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+    subscription: Subscription
+}
+
+type Book {
+    author: String
+    description: String
+    id: ID!
+    rating: Float
+    title: String!
+    year: Int
+}
+
+type Mutation {
+    addBook(input: BookInput!): Book!
+    deleteBook(id: ID!): Boolean
+    updateBook(input: UpdateBookInput!): Book!
+}
+
+type Query {
+    allBooks(search: String): [Book]
+    getBook(id: ID!): Book!
+}
+
+type Subscription {
+    bookSub: Book!
+}
+
+enum CacheControlScope {
+    PRIVATE
+    PUBLIC
+}
+
+input BookInput {
+    author: String!
+    description: String
+    rating: Float
+    title: String!
+    year: Int!
+}
+
+input UpdateBookInput {
+    author: String
+    description: String
+    id: ID!
+    rating: Float
+    title: String
+    year: Int
+}
+
+
+"The `Upload` scalar type represents a file upload."
+scalar Upload
