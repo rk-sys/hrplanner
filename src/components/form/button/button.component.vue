@@ -11,7 +11,7 @@ const props = defineProps({
     type: String,
     default: 'primary',
     validator(value: string) {
-      return ['primary', 'second', 'danger', 'success'].includes(value)
+      return ['primary', 'secondary', 'danger', 'success'].includes(value)
     },
   }
 })
@@ -19,7 +19,7 @@ const props = defineProps({
 
 <template>
   <button
-      class="rounded-none w-full py-3 uppercase outline-none hover:outline-none focus:outline-none text-white font-semibold text-center disabled:opacity-75"
+      class="rounded-sm w-full py-3 uppercase outline-none hover:outline-none focus:outline-none text-white font-semibold text-center disabled:opacity-75"
       :class="[buttonState, buttonType]">
     <slot/>
   </button>
@@ -43,11 +43,11 @@ const props = defineProps({
 
   &.ghost,
   &.borderless {
-    @apply hover:text-white hover:bg-primary-500 text-black
+    @apply hover:text-white hover:bg-primary-500 text-primary-500
   }
 }
 
-.second {
+.secondary {
   &.filled {
     @apply bg-white text-black border-gray-100 border hover:bg-gray-100/80 dark:bg-white dark:hover:bg-white/90
   }
@@ -81,7 +81,7 @@ const props = defineProps({
 
   &.ghost,
   &.borderless {
-    @apply text-black hover:bg-green-500 hover:text-white
+    @apply text-green-500 hover:bg-green-500 hover:text-white
   }
 }
 
@@ -100,7 +100,7 @@ const props = defineProps({
 
   &.ghost,
   &.borderless {
-    @apply text-black hover:text-white hover:bg-rose-500
+    @apply text-rose-500 hover:text-white hover:bg-rose-500
   }
 }
 

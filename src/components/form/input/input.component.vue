@@ -48,7 +48,7 @@ const isPlaceholderTop = computed(() => {
              @focus="isFocus = true"
              @focusout="isFocus = false"
              autocomplete="new-password"
-             class="h-[50px] py-2 focus:border-primary-500 border bg-transparent px-2 outline-none w-full text-lg d-flex items-center disabled:opacity-75"/>
+             class="rounded-sm h-[50px] py-2 focus:border-primary-500 border bg-transparent px-2 outline-none w-full text-lg d-flex items-center disabled:opacity-75"/>
 
       <span v-if="placeholder"
             @click="focusInput"

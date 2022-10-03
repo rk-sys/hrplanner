@@ -2,8 +2,8 @@
 import { computed, defineComponent, onBeforeMount } from 'vue'
 import { useGlobalStore } from './store/global'
 import { useQuery } from '@vue/apollo-composable'
-import ALL_BOOKS_QUERY from '@/grapql/allBooks.query.gql'
-import BOOKS_DESCRIPTION_QUERY from '@/grapql/booksDescription.query.gql'
+import ALL_BOOKS_QUERY from '@/graphql/allBooks.query.gql'
+import BOOKS_DESCRIPTION_QUERY from '@/graphql/booksDescription.query.gql'
 
 export default defineComponent({
   name: 'App',

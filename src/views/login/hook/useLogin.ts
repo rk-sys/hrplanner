@@ -27,7 +27,7 @@ export const useLogin = () => {
   })
 
   const loginUser = async (): Promise<void> => {
-    //TODO logic to login user
+    //TODO logic to login user with graphQL
     errorMsg.login = validateField('login', form.login, 3)
     errorMsg.password = validateField('password', form.password, 6)
     if (errorMsg.login === '' && errorMsg.password === '') {

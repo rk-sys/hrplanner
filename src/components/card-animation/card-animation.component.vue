@@ -5,8 +5,8 @@
     <div class="bg bg2 absolute"></div>
     <div class="bg bg3 absolute"></div>
     <h1 class="text-white text-4xl sm:text-4xl font-bold uppercase">{{ $t('hrplanner') }}</h1>
-    <h2 class="text-white text-2xl sm:text-2xl font-light uppercase font-second tracking-widest">
-      {{ $t('for better work') }}</h2>
+    <h2 class="text-white text-2xl md:text-xl sm:text-2xl font-light uppercase font-secondary tracking-widest">
+      {{ $t('better quality of work') }}</h2>
   </aside>
 </template>
 

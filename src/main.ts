@@ -11,7 +11,7 @@ import { DefaultApolloClient } from '@vue/apollo-composable'
 import './style.css'
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql'
+  uri: import.meta.env.VITE_APP_GRAPHQL_SERVER,
 })
 
 const cache = new InMemoryCache()
