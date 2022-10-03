@@ -1,3 +1,27 @@
 {
-  "hello": "Witam"
+  "hrplanner": "hrplanner",
+  "hello": "Witam",
+  "sign in": "Zaloguj się",
+  "sign up": "Zarejestruj sie",
+  "better quality of work": "lepsza jakość pracy",
+  "register new account": "Rejestracja nowego konta",
+  "limited to {limit} chars": "Maksymalna ilość znaków to {limit}",
+  "click me": "Kliknij mnie",
+  "login": "Login",
+  "email": "E-mail",
+  "repeat password": "Powtórz hasło",
+  "password": "Hasło",
+  "register account": "Zarejestruj konto",
+  "season {number}": "sezon {number}",
+  "not enough characters": "Za mało znaków",
+  "wrong email": "Niepoprawny adres email",
+  "password is to weak": "Hasło jest zbyt słabe",
+  "password do not match": "Hasła nie pasują do siebie",
+  "return to login page": "Wróc do strony logowania",
+  "register new user": "Zarejestruj nowe konto",
+  "login is required": "Login jest wymagany",
+  "password is required": "Hasło jest wymagane",
+  "login is to short": "Login jest zbyt krótki",
+  "password is to short": "Hasło jest zbyt krótkie",
+  "forgot password": "Zapomniałeś hasła?"
 }

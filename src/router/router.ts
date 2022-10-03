@@ -1,11 +1,21 @@
 import { createRouter, createWebHistory, Router } from 'vue-router';
-import vHome from '@/App.vue';
+import vLogin from '@/views/login/Login.view.vue';
 
 const routes = [
     {
-        path: '/',
-        name: '',
-        component: vHome
+        path: '/login',
+        name: 'Login',
+        component: vLogin
+    },
+    {
+        path: '/register',
+        name: 'Register',
+        component: vLogin
+    },
+    {
+        path: '/reset-password',
+        name: 'Reset password',
+        component: vLogin
     }
 ]
 

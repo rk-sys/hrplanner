@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     line-height: 24px;
     font-weight: 400;
@@ -21,63 +21,39 @@
 
 a {
     font-weight: 500;
-    color: #646cff;
+    color: #252230;
     text-decoration: inherit;
 }
 
 a:hover {
-    color: #535bf2;
+    color: #252230;
+    text-decoration: underline;
 }
 
 body {
     margin: 0;
-    display: flex;
-    place-items: center;
+    padding: 0;
     min-width: 320px;
     min-height: 100vh;
 }
 
-h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
+
+.bg-rounded {
+    color: #fff;
+    border: 0 solid transparent;
+    background: #334AFF;
+    border-radius: 91% 9% 90% 10% / 29% 82% 18% 71%;
+    padding: .5rem
 }
 
-button {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #1a1a1a;
-    cursor: pointer;
-    transition: border-color 0.25s;
-}
-
-button:hover {
-    border-color: #646cff;
-}
-
-button:focus,
-button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
-}
-
-.card {
-    padding: 2em;
-}
-
-#app {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
+.border-primary {
+    border: 1px solid #4e5358;
 }
 
 @media (prefers-color-scheme: light) {
     :root {
-        color: #213547;
-        background-color: #ffffff;
+        color: #252230;
+        background-color: #fff;
     }
 
     a:hover {
@@ -86,5 +62,9 @@ button:focus-visible {
 
     button {
         background-color: #f9f9f9;
+    }
+
+    .border-primary {
+        border: 1px solid #cbd5e0;
     }
 }

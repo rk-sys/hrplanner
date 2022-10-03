@@ -1,3 +1,26 @@
 {
-  "hello": "Hello"
+  "hrplanner": "hrplanner",
+  "hello": "Hello",
+  "sign in": "Sign in",
+  "better quality of work": "Better quality of work",
+  "register new account": "Register new account",
+  "sign up": "Sign up",
+  "limited to {limit} chars": "limited to {limit} chars",
+  "click me": "Click me",
+  "login": "Login",
+  "email": "E-mail",
+  "repeat password": "Repeat password",
+  "password": "Password",
+  "register account": "Register account",
+  "not enough characters": "Not enough characters",
+  "wrong email": "Wrong email",
+  "password is to weak": "Password is to weak",
+  "password do not match": "Password do not match",
+  "return to login page": "Return to login page",
+  "register new user": "Register new user",
+  "login is required": "Login is required",
+  "password is required": "Password is required",
+  "login is to short": "Login is to short",
+  "password is to short": "Password is to short",
+  "forgot password": "Forgot password"
 }
