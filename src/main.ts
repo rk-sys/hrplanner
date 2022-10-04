@@ -9,6 +9,7 @@ import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core'
 import { DefaultApolloClient } from '@vue/apollo-composable'
 import './style.css'
+import { useGlobalStore } from './store/global';
 
 const httpLink = createHttpLink({
   uri: import.meta.env.VITE_APP_GRAPHQL_SERVER,
@@ -23,7 +24,6 @@ const apolloClient = new ApolloClient({
 
 const i18n = createI18n({
   locale: 'pl',
-  fallbackLocale: 'pl',
   messages: {
     pl,
     en
@@ -38,3 +38,10 @@ const app = createApp({
 })
 
 app.use(createPinia()).use(Router).use(i18n).use(autoAnimatePlugin).mount('#app')
+
+const store = useGlobalStore();
+
+store.$subscribe((_, state) => {
+  // @ts-ignore
+  i18n.global.locale = state.activeLang
+})

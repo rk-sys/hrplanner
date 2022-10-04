@@ -22,5 +22,12 @@
   "password is required": "Password is required",
   "login is to short": "Login is to short",
   "password is to short": "Password is to short",
-  "forgot password": "Forgot password"
+  "forgot password": "Forgot password",
+  "home": "Home",
+  "register": "Register",
+  "settings": "Settings",
+  "profile": "Profile",
+  "logout": "Logout",
+  "pl": "PL",
+  "en": "EN"
 }

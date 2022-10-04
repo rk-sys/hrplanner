@@ -2,7 +2,7 @@ import cButton from './button.component.vue'
 import '../../../style.css'
 
 export default {
-	title: 'Components/Form/cButton',
+	title: 'Components/Form/Button',
 	components: cButton,
 	argTypes: {
 		disabled: {

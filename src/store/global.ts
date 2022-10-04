@@ -1,30 +1,35 @@
+import { computed, ref } from 'vue'
 import { defineStore } from 'pinia';
-import { RootStore } from './global.types';
 
-export const useGlobalStore = defineStore('globalStore', {
-    state: () => ({
-        lang: 'pl',
-        token: ''
-    } as RootStore),
-    getters: {
-        //Getters are just computed so we can not passed any params to them
-        getLang: (state: RootStore): String => state.lang,
-    },
-    actions: {
-        changeLanguage(payload: string) {
-            this.lang = payload
-        },
-        setToken(payload: string): void {
-            document.cookie = `hrpToken=${payload}; max-age=3600;`;
-            this.token = payload;
-        },
-        setTokenFromCookie(): void {
-            if (this.token === '') {
-                const cookiesToken = document.cookie.replace('hrpToken=', '')
-                if (cookiesToken !== '') {
-                    this.token = cookiesToken;
-                }
-            }
-        }
-    },
-});
+export const useGlobalStore = defineStore('globalStore', () => {
+  const activeLang = ref('pl')
+  const languages = ref(['pl', 'en'])
+  const token = ref('')
+
+  const activeLanguage = computed(() => activeLang);
+
+  const changeLanguage = (payload: string) => activeLang.value = payload;
+  const setToken = (payload: string) => {
+    document.cookie = `hrpToken=${payload}; max-age=3600;`;
+    token.value = payload;
+  }
+
+  const setTokenFromCookie = () => {
+    if (token.value === '') {
+      const cookiesToken = document.cookie.replace('hrpToken=', '')
+      if (cookiesToken !== '') {
+        token.value = cookiesToken;
+      }
+    }
+  }
+
+  return {
+    token,
+    languages,
+    activeLang,
+    activeLanguage,
+    setToken,
+    changeLanguage,
+    setTokenFromCookie
+  }
+})
