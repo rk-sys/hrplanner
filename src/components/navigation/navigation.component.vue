@@ -6,7 +6,11 @@ import { useNavigation } from './hook/useNavigation'
 import { ChevronDownIcon, FireIcon, LanguageIcon } from '@heroicons/vue/24/solid'
 
 const { links, profileLinks }: { links: Ref<Link[]>, profileLinks: Ref<Link[]> } = useNavigation();
-const { activeLanguage, languages, changeLanguage }: { activeLanguage: string, languages: string[], changeLanguage: string } = useGlobalStore();
+const {
+  activeLanguage,
+  languages,
+  changeLanguage
+}: { activeLanguage: string, languages: string[], changeLanguage: string } = useGlobalStore();
 
 const isFocusProfile = ref(false);
 const isFocusLanguage = ref(false);
@@ -39,16 +43,18 @@ const isFocusLanguage = ref(false);
       <chevron-down-icon class="ml-2 w-5 h-5 text-secondary-500 dark:text-white"/>
 
       <div v-if="isFocusProfile"
-          class="absolute bg-white top-[2.4rem] right-0 shadow-md rounded-sm flex flex-col border-gray-100 border border-solid dark:bg-dark-500 dark:border-neutral-700">
+           class="absolute p-1 bg-white top-[2.32rem] right-0 shadow-md rounded-sm flex flex-col border-gray-100 border border-solid dark:bg-dark-500 dark:border-neutral-700">
 
-        <router-link class="navigation__item px-4 py-2 w-36"
+        <router-link class="navigation__item px-4 my-0.5 py-2 w-36"
                      v-for="(link, index) in profileLinks"
                      :key="index"
                      :to="{ name: link.name}">{{ $t(`${link.label}`) }}
 
         </router-link>
 
-        <p class="navigation__item px-4 py-2 w-36 no-underline border-t-[1px] border-solid border-gray-300 dark:border-t-neutral-700">{{ $t('logout') }}</p>
+        <p class="navigation__item px-4 py-2 w-36 no-underline border-t-[1px] border-solid border-gray-300 dark:border-t-neutral-700">
+          {{ $t('logout') }}
+        </p>
       </div>
     </div>
 
@@ -56,15 +62,15 @@ const isFocusLanguage = ref(false);
          @mouseleave="isFocusLanguage = false"
          class="relative ml-8 navigation__item">
 
-      <language-icon class=" p-1 w-8 h-8 text-2xl"/>
+      <language-icon class="p-1 w-8 h-8 text-2xl"/>
 
       <div v-if="isFocusLanguage"
-           class="absolute bg-white top-8 right-0 shadow-md rounded-sm flex flex-col border-gray-100 border border-solid dark:bg-dark-500 dark:border-neutral-700">
+           class="absolute p-1 bg-white top-8 right-0 shadow-md rounded-sm flex flex-col border-gray-100 border border-solid dark:bg-dark-500 dark:border-neutral-700">
 
         <p v-for="(lang, index) in languages"
            :key="index"
            @click="changeLanguage(lang)"
-           class="navigation__item px-4 py-2"
+           class="navigation__item px-4 py-2 my-0.5"
            :class="{'router-link-active' : lang === activeLanguage}">{{ $t(`${lang}`) }}</p>
       </div>
     </div>
