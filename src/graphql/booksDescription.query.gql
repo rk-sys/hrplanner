@@ -1,6 +1,0 @@
-query BooksDescription {
-    allBooks {
-        id
-        description
-    }
-}

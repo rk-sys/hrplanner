@@ -2,7 +2,7 @@ import cCardAnimation from './card-animation.component.vue'
 import '../../style.css'
 
 export default {
-	title: 'Components/cCardAnimation',
+	title: 'Components/CardAnimation',
 	components: cCardAnimation,
 }
 

@@ -2,7 +2,7 @@ import cInput from './input.component.vue'
 import '../../../style.css'
 
 export default {
-	title: 'Components/Form/cInput',
+	title: 'Components/Form/Input',
 	components: cInput
 }
 

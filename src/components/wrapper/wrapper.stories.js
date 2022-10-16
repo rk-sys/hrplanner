@@ -2,7 +2,7 @@ import cWrapper from './wrapper.component.vue'
 import '../../style.css'
 
 export default {
-	title: 'Components/wrapper',
+	title: 'Components/Wrapper',
 	component: cWrapper
 }
 

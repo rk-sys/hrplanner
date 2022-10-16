@@ -1,28 +1,12 @@
-<script lang="ts">
-import { computed, defineComponent, onBeforeMount } from 'vue'
+<script setup lang="ts">
+import { onBeforeMount } from 'vue'
 import { useGlobalStore } from './store/global'
-import { useQuery } from '@vue/apollo-composable'
-import ALL_BOOKS_QUERY from '@/graphql/allBooks.query.gql'
-import BOOKS_DESCRIPTION_QUERY from '@/graphql/booksDescription.query.gql'
 
-export default defineComponent({
-  name: 'App',
-  setup() {
-    const store = useGlobalStore();
-    const { result, loading, error } = useQuery(BOOKS_DESCRIPTION_QUERY)
-    onBeforeMount(() => {
-      store.changeLanguage(window.navigator.language.split('-')[0])
-      store.setTokenFromCookie();
-    })
+const { changeLanguage, setTokenFromCookie } = useGlobalStore();
 
-    const books = computed(() => result.value?.allBooks ?? [])
-
-    return {
-      books,
-      loading,
-      error
-    }
-  }
+onBeforeMount(() => {
+  changeLanguage(window.navigator.language.split('-')[0])
+  setTokenFromCookie();
 })
 </script>
 

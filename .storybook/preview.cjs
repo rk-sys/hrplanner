@@ -1,5 +1,6 @@
 import { app } from '@storybook/vue3'
 import { createI18n } from 'vue-i18n';
+import { createPinia } from 'pinia';
 import messages from '../src/i18n/en.json';
 
 const i18n = createI18n({
@@ -8,7 +9,9 @@ const i18n = createI18n({
   messages,
 });
 
-app.use(i18n)
+const pinia = createPinia();
+
+app.use(pinia).use(i18n)
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

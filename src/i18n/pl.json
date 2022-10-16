@@ -23,5 +23,13 @@
   "password is required": "Hasło jest wymagane",
   "login is to short": "Login jest zbyt krótki",
   "password is to short": "Hasło jest zbyt krótkie",
-  "forgot password": "Zapomniałeś hasła?"
+  "forgot password": "Zapomniałeś hasła?",
+  "home": "Home",
+  "register": "Rejestracja",
+  "settings": "Ustawienia",
+  "profile": "Profil",
+  "logout": "Wyloguj się",
+  "pl": "PL",
+  "en": "EN"
+
 }
