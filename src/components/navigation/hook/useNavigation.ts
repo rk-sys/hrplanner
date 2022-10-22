@@ -7,14 +7,6 @@ export const useNavigation = () => {
 			name: 'Home',
 			label: 'home'
 		},
-		{
-			name: 'Login',
-			label: 'login'
-		},
-		{
-			name: 'Registration',
-			label: 'Registration'
-		},
 	])
 
 	const profileLinks: Ref<Link[]> = ref([
@@ -26,10 +18,6 @@ export const useNavigation = () => {
 			name: 'Settings',
 			label: 'settings'
 		},
-		{
-			name: 'Registration',
-			label: 'Lorem ipsum'
-		}
 	])
 
 	return {

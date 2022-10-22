@@ -8,8 +8,6 @@ export const useGlobalStore = defineStore('globalStore', () => {
   const languages = ref(['pl', 'en'])
   const token = ref('')
 
-  const activeLanguage = computed(() => activeLang.value);
-
   const changeLanguage = (payload: string) => activeLang.value = payload;
 
   const isAuthenticated = (): boolean => {
@@ -41,7 +39,6 @@ export const useGlobalStore = defineStore('globalStore', () => {
     token,
     languages,
     activeLang,
-    activeLanguage,
     signOut,
     setToken,
     changeLanguage,

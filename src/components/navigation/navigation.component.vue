@@ -6,12 +6,7 @@ import { useNavigation } from './hook/useNavigation'
 import { ChevronDownIcon, FireIcon, LanguageIcon } from '@heroicons/vue/24/solid'
 
 const { links, profileLinks }: { links: Ref<Link[]>, profileLinks: Ref<Link[]> } = useNavigation();
-const {
-  signOut,
-  languages,
-  activeLanguage,
-  changeLanguage
-}: { activeLanguage: string, languages: string[], changeLanguage: void, signOut: Promise<void> } = useGlobalStore();
+const store = useGlobalStore();
 
 const isFocusProfile = ref(false);
 const isFocusLanguage = ref(false);
@@ -54,7 +49,7 @@ const isFocusLanguage = ref(false);
         </router-link>
 
         <p class="navigation__item px-4 py-2 w-36 no-underline border-t-[1px] border-solid border-gray-300 dark:border-t-neutral-700"
-           @click="signOut">
+           @click="store.signOut">
 
           {{ $t('logout') }}
         </p>
@@ -70,11 +65,11 @@ const isFocusLanguage = ref(false);
       <div v-if="isFocusLanguage"
            class="absolute p-1 bg-white top-8 right-0 shadow-md rounded-sm flex flex-col border-gray-100 border border-solid dark:bg-dark-500 dark:border-neutral-700">
 
-        <p v-for="(lang, index) in languages"
+        <p v-for="(lang, index) in store.languages"
            :key="index"
-           @click="changeLanguage(lang)"
+           @click="store.changeLanguage(lang)"
            class="navigation__item px-4 py-2 my-0.5"
-           :class="{'router-link-active' : lang === activeLanguage}">{{ $t(`${lang}`) }}</p>
+           :class="{'router-link-active' : lang === store.activeLang}">{{ $t(`${lang}`)  }}</p>
       </div>
     </div>
   </nav>
