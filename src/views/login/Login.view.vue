@@ -6,7 +6,7 @@ import cInput from '@/components/form/input/input.component.vue'
 import cButton from '@/components/form/button/button.component.vue'
 import { useLogin } from './hook/useLogin'
 
-const { form, errorMsg, loginUser, goToRegisterPage } = useLogin();
+const { form, errorMsg, loginUser, goToRegistrationPage } = useLogin();
 </script>
 
 <template>
@@ -14,7 +14,7 @@ const { form, errorMsg, loginUser, goToRegisterPage } = useLogin();
     <c-wrapper>
       <c-animation/>
 
-      <aside class="w-full p-6 text-black flex flex-col justify-between h-[50vh] md:h-auto md:w-6/12">
+      <aside class="w-full p-6 text-black flex flex-col justify-between h-[50vh] md:h-auto md:w-6/12 sm:justify-around">
         <h1 class="mb-4 text-4xl text-secondary-500 text-center">{{ $t('sign in') }}</h1>
 
         <form class="my-6 flex flex-col justify-between"
@@ -38,11 +38,11 @@ const { form, errorMsg, loginUser, goToRegisterPage } = useLogin();
         </form>
 
         <div class="px-3 my-3">
-          <c-button >{{ $t('register new account') }}</c-button>
+          <c-button @click="goToRegistrationPage">{{ $t('registration new account') }}</c-button>
         </div>
 
-        <router-link class="text-center"
-                     :to="{ name: 'Register'}">{{ $t('forgot password') }}</router-link>
+        <router-link class="text-center hover:underline"
+                     :to="{ name: 'Registration'}">{{ $t('forgot password') }}</router-link>
       </aside>
     </c-wrapper>
   </main>

@@ -2,16 +2,18 @@
 import { onBeforeMount } from 'vue'
 import { useGlobalStore } from './store/global'
 
-const { changeLanguage, setTokenFromCookie } = useGlobalStore();
+const { changeLanguage, setTokenFromSession } = useGlobalStore();
 
 onBeforeMount(() => {
   changeLanguage(window.navigator.language.split('-')[0])
-  setTokenFromCookie();
+  setTokenFromSession();
 })
 </script>
 
 <template>
   <div id="main" class="container mx-auto h-screen flex">
+    <notifications />
+
     <router-view/>
   </div>
 </template>

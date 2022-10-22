@@ -54,7 +54,7 @@ const isPlaceholderTop = computed(() => {
             @click="focusInput"
             :class="[isPlaceholderTop ? 'top-0' : 'top-1/2' ]"
             class="text-lg leading-4 duration-100 p-2 py-1 absolute left-4 -translate-y-1/2 bg-white text-neutral-500">
-        {{ placeholder }}</span>
+        {{ $t(`${placeholder}`) }}</span>
     </div>
 
     <span v-if="isError"
