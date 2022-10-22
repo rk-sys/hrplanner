@@ -8,7 +8,7 @@ export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
 
   return {
-    plugins: [vue(),],
+    plugins: [vue()],
     resolve: {
       define: {
         __APP_ENV__: env.APP_ENV

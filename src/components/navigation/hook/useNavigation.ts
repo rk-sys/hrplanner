@@ -12,8 +12,8 @@ export const useNavigation = () => {
 			label: 'login'
 		},
 		{
-			name: 'Register',
-			label: 'register'
+			name: 'Registration',
+			label: 'Registration'
 		},
 	])
 
@@ -27,7 +27,7 @@ export const useNavigation = () => {
 			label: 'settings'
 		},
 		{
-			name: 'Register',
+			name: 'Registration',
 			label: 'Lorem ipsum'
 		}
 	])

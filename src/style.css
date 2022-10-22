@@ -67,3 +67,22 @@ body {
         border: 1px solid #cbd5e0;
     }
 }
+.vue-notification-group {
+    top: 1rem !important;
+    right: 1rem !important;
+}
+
+.vue-notification {
+    background: #334AFF ;
+    border-radius: 0.125rem;
+    border-left-color: #747bff;
+    font-size: 16px;
+}
+.notification-title {
+    padding: .5rem
+}
+
+.vue-notification.error {
+    background: #f43f5e;
+    border-left-color: #fb7185;
+}

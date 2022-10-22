@@ -7,7 +7,7 @@ export const rulesSettingsChars = (value: string, min: number): boolean => {
 }
 
 export const validateEmail = (email: string): boolean => {
-	const validRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+	const validRegex = /^[a-zA-Z_0-9]+[.]?[a-zA-Z_0-9]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 	return !email.match(validRegex)
 };
 

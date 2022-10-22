@@ -1,26 +1,40 @@
 import { computed, ref } from 'vue'
 import { defineStore } from 'pinia';
+import { useRouter } from 'vue-router';
 
 export const useGlobalStore = defineStore('globalStore', () => {
+  const router = useRouter()
   const activeLang = ref('pl')
   const languages = ref(['pl', 'en'])
   const token = ref('')
 
-  const activeLanguage = computed(() => activeLang);
+  const activeLanguage = computed(() => activeLang.value);
 
   const changeLanguage = (payload: string) => activeLang.value = payload;
+
+  const isAuthenticated = (): boolean => {
+    const sessionToken = localStorage.getItem('HRPTOKEN')
+    return !!sessionToken || !!token.value
+  }
+
   const setToken = (payload: string) => {
-    document.cookie = `hrpToken=${payload}; max-age=3600;`;
+    localStorage.setItem('HRPTOKEN', payload)
     token.value = payload;
   }
 
-  const setTokenFromCookie = () => {
+  const setTokenFromSession = () => {
     if (token.value === '') {
-      const cookiesToken = document.cookie.replace('hrpToken=', '')
-      if (cookiesToken !== '') {
-        token.value = cookiesToken;
+      const sessionToken = localStorage.getItem('HRPTOKEN')
+      if (!!sessionToken) {
+        token.value = sessionToken;
       }
     }
+  }
+
+  const signOut = async (): Promise<void> => {
+    localStorage.removeItem('HRPTOKEN')
+    token.value = ''
+    await router.push({ name: 'Login' })
   }
 
   return {
@@ -28,8 +42,10 @@ export const useGlobalStore = defineStore('globalStore', () => {
     languages,
     activeLang,
     activeLanguage,
+    signOut,
     setToken,
     changeLanguage,
-    setTokenFromCookie
+    isAuthenticated,
+    setTokenFromSession
   }
 })
