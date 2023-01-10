@@ -4,7 +4,7 @@ import cWrapper from '@/components/wrapper/wrapper.component.vue'
 import cAnimation from '@/components/card-animation/card-animation.component.vue'
 import cInput from '@/components/form/input/input.component.vue'
 import cButton from '@/components/form/button/button.component.vue'
-import { useLogin } from './hook/useLogin'
+import { useLogin } from './hook/use-login'
 
 const { form, errorMsg, loginUser, goToRegistrationPage } = useLogin();
 </script>
@@ -15,7 +15,7 @@ const { form, errorMsg, loginUser, goToRegistrationPage } = useLogin();
       <c-animation/>
 
       <aside class="w-full p-6 text-black flex flex-col justify-between h-[50vh] md:h-auto md:w-6/12 sm:justify-around">
-        <h1 class="mb-4 text-4xl text-secondary-500 text-center">{{ $t('sign in') }}</h1>
+        <h1 class="mb-4 text-4xl text-secondary-500 text-center">{{ $t('common.SIGN_IN') }}</h1>
 
         <form class="my-6 flex flex-col justify-between"
               @submit.prevent="loginUser">
@@ -32,17 +32,17 @@ const { form, errorMsg, loginUser, goToRegistrationPage } = useLogin();
 
           <div class="p-3">
             <c-button button-type="ghost"
-                      type="submit">{{ $t('login') }}</c-button>
+                      type="submit">{{ $t('button.LOGIN') }}</c-button>
 
           </div>
         </form>
 
         <div class="px-3 my-3">
-          <c-button @click="goToRegistrationPage">{{ $t('registration new account') }}</c-button>
+          <c-button @click="goToRegistrationPage">{{ $t('common.REGISTER_NEW_ACCOUNT') }}</c-button>
         </div>
 
         <router-link class="text-center hover:underline"
-                     :to="{ name: 'Registration'}">{{ $t('forgot password') }}</router-link>
+                     :to="{ name: 'Registration'}">{{ $t('common.FORGOT_PASSWORD') }}</router-link>
       </aside>
     </c-wrapper>
   </main>

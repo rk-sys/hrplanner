@@ -1,6 +1,6 @@
 import { ref, watch } from 'vue';
-import { validateEmail, validateSame, validateField } from '@/hooks/useRules';
-import { useRegistrationStore } from '@/views/registration/store/useRegistration.store';
+import { validateEmail, validateSame, validateField } from '@/hooks/use-rules';
+import { useRegistrationStore } from '@/store/registration/use-registration.store';
 
 export const useRegistrationInfo = () => {
 

@@ -6,7 +6,7 @@ import cNavigation from '@/components/navigation/navigation.component.vue'
   <div class="w-full">
     <c-navigation />
 
-    <main class="mt-8 mx-4">
+    <main class="container mt-8 px-4">
       <router-view/>
     </main>
   </div>

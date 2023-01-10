@@ -1,6 +1,6 @@
 import { watch } from 'vue';
-import { validateEmail } from '@/hooks/useRules';
-import { useRegistrationStore } from '@/views/registration/store/useRegistration.store';
+import { validateEmail } from '@/hooks/use-rules';
+import { useRegistrationStore } from '@/store/registration/use-registration.store';
 
 export const useRegistrationCode = () => {
 
@@ -12,7 +12,7 @@ export const useRegistrationCode = () => {
 
   const sendCode = () => {
     validateEmail(email.value) ? errorMsg.value = 'wrong email' : errorMsg.value = ''
-    if(errorMsg.value === '') {
+    if(!errorMsg.value) {
       sendCodeToEmail(email.value)
     }
   }

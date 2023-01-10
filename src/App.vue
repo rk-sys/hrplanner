@@ -11,13 +11,18 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div id="main" class="container mx-auto h-screen flex">
-    <notifications />
+  <div id="main"
+       class="relative">
 
-    <router-view/>
+    <div class="container mx-auto h-screen flex">
+      <notifications />
+
+      <router-view/>
+    </div>
   </div>
 </template>
 
 <style lang="scss"
        scoped>
+
 </style>

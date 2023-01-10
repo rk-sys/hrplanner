@@ -1,0 +1,15 @@
+export default {
+  'link.CALENDAR': 'Kalendarz',
+  'link.DELETE': 'Usuń',
+  'link.EMPLOYEES': 'Pracownicy',
+  'link.HOME': 'Strona główna',
+  'link.LOGOUT': 'Wyloguj się',
+  'link.PROFILE': 'Profil',
+  'link.PROJECTS': 'Projekty',
+  'link.SETTINGS': 'Ustawienia',
+  'link.UPDATE': 'Aktualizuj',
+  'link.USERS': 'Użytkownicy',
+  'link.USER_NAME': 'Użytkownik',
+  'link.en': 'EN',
+  'link.pl': 'PL',
+}
