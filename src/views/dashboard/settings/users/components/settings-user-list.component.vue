@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, PropType } from 'vue';
+import { PropType } from 'vue';
 import { useAutoAnimate } from '@formkit/auto-animate/vue'
 import { TSettingsUsers } from '@/store/setting-user/settings-user.types';
 
