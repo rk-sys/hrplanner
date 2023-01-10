@@ -5,31 +5,31 @@ export const useNavigation = () => {
 	const links: Ref<Link[]> = ref([
 		{
 			name: 'Home',
-			label: 'home'
+			label: 'HOME'
 		},
 		{
-			name: 'Login',
-			label: 'login'
+			name: 'Home',
+			label: 'EMPLOYEES'
 		},
 		{
-			name: 'Registration',
-			label: 'Registration'
+			name: 'Home',
+			label: 'PROJECTS'
+		},
+		{
+			name: 'Home',
+			label: 'CALENDAR'
 		},
 	])
 
 	const profileLinks: Ref<Link[]> = ref([
 		{
 			name: 'Login',
-			label: 'profile'
+			label: 'PROFILE'
 		},
 		{
-			name: 'Settings',
-			label: 'settings'
+			name: 'Settings my users',
+			label: 'USERS'
 		},
-		{
-			name: 'Registration',
-			label: 'Lorem ipsum'
-		}
 	])
 
 	return {

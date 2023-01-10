@@ -1,0 +1,11 @@
+export default {
+  'button.ADD': 'Dodaj',
+  'button.CANCEL': 'Anuluj',
+  'button.CHOOSE': 'Wybierz',
+  'button.CREATE': 'Stwórz',
+  'button.CREATE_NEW_USER': 'Stwórz nowego użytkownika',
+  'button.DELETE': 'Usuń',
+  'button.LOGIN': 'Login',
+  'button.SAVE': 'Zapisz',
+  'button.UPDATE': 'Zaktualizuj'
+}

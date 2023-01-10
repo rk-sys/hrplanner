@@ -1,6 +1,6 @@
 import App from '@/App.vue'
 import Router from './router/router'
-import pl from './i18n/pl.json'
+import pl from './i18n/pl/pl'
 import en from './i18n/en.json'
 import Notifications from '@kyvg/vue3-notification'
 import { createI18n } from 'vue-i18n'

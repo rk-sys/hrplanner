@@ -1,6 +1,6 @@
-import { reactive, watch, onBeforeMount } from 'vue';
+import { reactive, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import { validateField } from '@/hooks/useRules';
+import { validateField } from '@/hooks/use-rules';
 import { useGlobalStore } from '@/store/global';
 import { TLoginForm, TResponseLogin } from '../login.types';
 import { notify } from '@kyvg/vue3-notification';
@@ -34,7 +34,7 @@ export const useLogin = () => {
   const loginUser = async (): Promise<void> => {
     errorMsg.login = validateField('login', form.login, 3)
     errorMsg.password = validateField('password', form.password, 6)
-    if (errorMsg.login === '' && errorMsg.password === '') {
+    if (!errorMsg.login && !errorMsg.password) {
       try {
         const { data }: { data: TResponseLogin } = await axios.post('/api/auth/signIn', form);
         global.setToken(data.token);

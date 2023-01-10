@@ -3,7 +3,7 @@ import cWrapper from '@/components/wrapper/wrapper.component.vue'
 import cAnimation from '@/components/card-animation/card-animation.component.vue'
 import cInput from '@/components/form/input/input.component.vue'
 import cButton from '@/components/form/button/button.component.vue'
-import { useRegistrationCode } from './hooks/useRegistrationCode'
+import { useRegistrationCode } from './hooks/use-registration-code'
 
 const { email, errorMsg, sendCode } = useRegistrationCode();
 
@@ -16,30 +16,30 @@ const { email, errorMsg, sendCode } = useRegistrationCode();
       <c-animation />
 
       <aside class="w-full p-6 text-black flex flex-col justify-between h-[50vh] sm:justify-around md:h-auto md:w-6/12">
-        <h1 class="mb-4 text-4xl text-secondary-500 text-center">{{ $t('registration') }}</h1>
+        <h1 class="mb-4 text-4xl text-secondary-500 text-center">{{ $t('title.REGISTRATION') }}</h1>
 
         <form class="my-6 flex flex-col justify-between md:justify-center"
               @submit.prevent="sendCode">
 
           <c-input v-model="email"
                    :error-msg="errorMsg"
-                   placeholder="email"/>
+                   placeholder="placeholder.EMAIL"/>
 
           <span class="text-center pt-2 px-12 pb-5 md:px-2">
             {{ $t('after you click send a code, check your e-mail. You should get message with code, this code have to input with next step') }}
           </span>
 
           <div class="px-3 my-3">
-            <c-button type="submit">{{ $t('send a code') }}</c-button>
+            <c-button type="submit">{{ $t('common.SEND_A_CODE') }}</c-button>
           </div>
         </form>
 
         <div>
           <router-link class="text-center block mb-2 hover:underline"
-                       :to="{ name: 'Registration info'}">{{ $t('i got a code') }}</router-link>
+                       :to="{ name: 'Registration info'}">{{ $t('common.I_GOT_A_CODE') }}</router-link>
 
           <router-link class="text-center block hover:underline"
-                       :to="{ name: 'Login'}">{{ $t('back to login page') }}</router-link>
+                       :to="{ name: 'Login'}">{{ $t('common.BACK_TO_LOGIN_PAGE') }}</router-link>
         </div>
       </aside>
     </c-wrapper>

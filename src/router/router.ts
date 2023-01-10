@@ -1,12 +1,14 @@
 import { createRouter, createWebHistory, Router } from 'vue-router';
 import { useGlobalStore } from '@/store/global'
-import vLogin from '@/views/login/Login.view.vue';
-import vRegistration from '@/views/registration/Registration.view.vue';
-import vRegistrationCode from '@/views/registration/RegistrationCode.view.vue';
-import vRegistrationInfo from '@/views/registration/RegistrationInfo.view.vue';
-import vHome from '@/views/dashboard/home/Home.view.vue';
-
-import vDashboard from '@/views/dashboard/Dashboard.view.vue';
+import vLogin from '@/views/login/login.view.vue';
+import vRegistration from '@/views/registration/registration.view.vue';
+import vRegistrationCode from '@/views/registration/registration-code.view.vue';
+import vRegistrationInfo from '@/views/registration/registration-info.view.vue';
+import vHome from '@/views/dashboard/home/home.view.vue';
+import vSettings from '@/views/dashboard/settings/settings.view.vue'
+import vSettingsUsers from '@/views/dashboard/settings/users/settings-users.view.vue'
+import vDashboard from '@/views/dashboard/dashboard.view.vue';
+import axios from 'axios';
 
 const routes = [
   {
@@ -50,9 +52,17 @@ const routes = [
         component: vHome
       },
       {
-        path: 'settings',
+        path: '/settings',
         name: 'Settings',
-        component: vHome
+        component: vSettings,
+        redirect: () => ({ name: 'Settings new users' }),
+        children: [
+          {
+            path: 'users',
+            name: 'Settings my users',
+            component: vSettingsUsers
+          }
+        ]
       }
     ]
   }
@@ -62,6 +72,20 @@ const router: Router = createRouter({
   history: createWebHistory(),
   routes
 })
+
+axios.interceptors.request.use((config) => {
+  const store = useGlobalStore();
+  if (config && config.url && (config.url.includes('signIn') || config.url.includes('registration'))) {
+    return config;
+  } else {
+    const token = store.token
+    if(config && config.headers) {
+      config.headers[ 'Authorization' ] = `Bearer ${token}`;
+      return config;
+    }
+  }
+});
+
 
 router.beforeEach(async (to, form, next) => {
   const store = useGlobalStore()
