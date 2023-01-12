@@ -2,7 +2,7 @@
 import { onBeforeMount } from 'vue'
 import { useGlobalStore } from './store/global'
 
-const { changeLanguage, setTokenFromSession } = useGlobalStore();
+const { changeLanguage, setTokenFromSession, isAuthenticated } = useGlobalStore();
 
 onBeforeMount(() => {
   changeLanguage(window.navigator.language.split('-')[0])
@@ -21,8 +21,3 @@ onBeforeMount(() => {
     </div>
   </div>
 </template>
-
-<style lang="scss"
-       scoped>
-
-</style>

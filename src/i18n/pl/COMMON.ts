@@ -10,4 +10,7 @@ export default {
   'common.SEND_A_CODE': 'Wyślij kod',
   'common.SIGN_IN': 'Zaloguj się',
   'common.SIGN_UP': 'Zarejestruj się',
+  'common.RESET_PASSWORD': 'Resetowanie hasła',
+  'common.NEW_PASSWORD': 'Podaj nowe hasło',
+  'common.SEND_LINK_ON_EMAIL': 'Na podany adres e-mail został wysłany mail z linkiem do resetowania hasła'
 }

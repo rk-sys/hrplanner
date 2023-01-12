@@ -86,3 +86,7 @@ body {
     background: #f43f5e;
     border-left-color: #fb7185;
 }
+
+.accent-text {
+    border-radius: 91% 9% 90% 10% / 29% 82% 18% 71%;
+}

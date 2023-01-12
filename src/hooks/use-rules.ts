@@ -13,14 +13,14 @@ export const validateEmail = (email: string): boolean => {
 
 export const validateField = (field: string, newValue: string, min: number): string => {
 	if(!newValue) {
-		return `${field} is required`
+		return `validation.FIELD_IS_REQUIRED`
 	} else if (newValue.length < min) {
-		return `${field} is to short`
+		return `validation.FIELD_IS_TO_SHORT`
 	} else {
 		return ''
 	}
 }
 
 export const validateSame = (filed: string, a: string, b: string): string => {
-	return a !== '' && a === b ? '' : `${filed} do not match`
+	return a !== '' && a === b ? '' : `validation.FIELD_DO_NOT_MATCH`
 }
