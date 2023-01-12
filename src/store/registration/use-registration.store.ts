@@ -11,10 +11,6 @@ export const useRegistrationStore = defineStore('registrationStore', () => {
   const router = useRouter();
   const{ t } = useI18n({ inheritLocale: true, useScope: 'local'})
 
-  const email: Ref<string> = ref('')
-
-  const errorMsg: Ref<string> = ref('')
-
   const registrationForm: TRegistrationForm = reactive({
     login: '',
     firstName: '',
@@ -66,8 +62,6 @@ export const useRegistrationStore = defineStore('registrationStore', () => {
   }
 
   return {
-    email,
-    errorMsg,
     registrationForm,
     registrationErrors,
     sendCodeToEmail,

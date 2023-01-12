@@ -26,7 +26,6 @@ const { form, errorMsg, loginUser, goToRegistrationPage } = useLogin();
 
           <c-input v-model="form.password"
                    :error-msg="errorMsg.password"
-                   error-msg="Wrong login"
                    placeholder="password"
                    type="password"/>
 
@@ -42,7 +41,7 @@ const { form, errorMsg, loginUser, goToRegistrationPage } = useLogin();
         </div>
 
         <router-link class="text-center hover:underline"
-                     :to="{ name: 'Registration'}">{{ $t('common.FORGOT_PASSWORD') }}</router-link>
+                     :to="{ name: 'Reset password'}">{{ $t('common.FORGOT_PASSWORD') }}</router-link>
       </aside>
     </c-wrapper>
   </main>

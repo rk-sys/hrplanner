@@ -7,5 +7,7 @@ export default {
   'button.DELETE': 'Usuń',
   'button.LOGIN': 'Login',
   'button.SAVE': 'Zapisz',
-  'button.UPDATE': 'Zaktualizuj'
+  'button.UPDATE': 'Zaktualizuj',
+  'button.RESET_EMAIL': 'Zresetuj hasło',
+  'button.CONFIRM_PASSWORD': 'Zatwierdź hasło'
 }
