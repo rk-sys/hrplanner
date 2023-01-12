@@ -2,7 +2,7 @@
 import { onBeforeMount } from 'vue'
 import { useGlobalStore } from './store/global'
 
-const { changeLanguage, setTokenFromSession, isAuthenticated } = useGlobalStore();
+const { changeLanguage, setTokenFromSession } = useGlobalStore();
 
 onBeforeMount(() => {
   changeLanguage(window.navigator.language.split('-')[0])
