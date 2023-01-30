@@ -27,10 +27,12 @@ const { form, errorMsg, isLinkOnMail, checkResetPasswordForm } = useResetPasswor
               @submit.prevent="checkResetPasswordForm">
 
           <c-input v-model="form.email"
+                   white-bg
                    :error-msg="errorMsg.email"
                    :placeholder="$t('placeholder.EMAIL')" />
 
           <c-input v-model="form.repeatEmail"
+                   white-bg
                    :error-msg="errorMsg.repeatEmail"
                    :placeholder="$t('placeholder.REPEAT_EMAIL')" />
 

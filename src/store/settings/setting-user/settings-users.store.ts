@@ -3,7 +3,7 @@ import { Ref, ref } from 'vue';
 import { notify } from '@kyvg/vue3-notification';
 import axios from 'axios';
 import { useI18n } from 'vue-i18n';
-import { TSettingsUsers, TUser } from "./settings-user.types";
+import { TSettingsUsers, TUser } from './settings-user.types';
 
 export const useSettingsUsers = defineStore('settingsUsers', () => {
   const { t } = useI18n({ inheritLocale: true, useScope: 'local' })

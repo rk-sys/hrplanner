@@ -27,6 +27,10 @@ export const useNavigation = () => {
 			label: 'PROFILE'
 		},
 		{
+			name: 'Configurations',
+			label: 'TAGS'
+		},
+		{
 			name: 'Settings my users',
 			label: 'USERS'
 		},

@@ -39,7 +39,7 @@ const isFocusLanguage = ref(false);
       <chevron-down-icon class="ml-2 w-5 h-5 text-secondary-500 dark:text-white" />
 
       <div v-if="isFocusProfile"
-           class="absolute p-2 bg-white top-[2.32rem] right-0 shadow-md rounded-sm flex flex-col border-gray-100 border border-solid dark:bg-dark-500 dark:border-neutral-700">
+           class="z-10 absolute p-2 bg-white top-[2.32rem] right-0 shadow-md rounded-sm flex flex-col border-gray-100 border border-solid dark:bg-dark-500 dark:border-neutral-700">
 
         <router-link class="navigation__item px-4 my-0.5 py-2 w-auto"
                      v-for="(link, index) in profileLinks"

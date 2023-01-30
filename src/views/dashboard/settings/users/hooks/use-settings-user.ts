@@ -1,8 +1,8 @@
 import { reactive, watch, ref } from 'vue';
 import { storeToRefs } from 'pinia'
 import { validateEmail, validateField } from '@/hooks/use-rules';
-import { useSettingsUsers } from '@/store/setting-user/settings-users.store'
-import { TSettingsUsers } from '@/store/setting-user/settings-user.types';
+import { useSettingsUsers } from '@/store/settings/setting-user/settings-users.store'
+import { TSettingsUsers } from '@/store/settings/setting-user/settings-user.types';
 
 export const useSettingsUser = () => {
   const store = useSettingsUsers();

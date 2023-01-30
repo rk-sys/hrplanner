@@ -23,38 +23,46 @@ const { registrationForm, registrationErrors, checkRegistrationForm } = useRegis
          <div>
            <c-input v-model="registrationForm.login"
                     :error-msg="registrationErrors.login"
+                    white-bg
                     placeholder="placeholder.LOGIN"/>
 
            <c-input v-model="registrationForm.firstName"
                     :error-msg="registrationErrors.firstName"
+                    white-bg
                     placeholder="placeholder.FIRST_NAME"/>
 
            <c-input v-model="registrationForm.lastName"
                     :error-msg="registrationErrors.lastName"
+                    white-bg
                     placeholder="placeholder.LAST_NAME"/>
 
            <c-input v-model="registrationForm.companyName"
                     :error-msg="registrationErrors.companyName"
+                    white-bg
                     placeholder="placeholder.COMPANY"/>
          </div>
 
           <div>
             <c-input v-model="registrationForm.email"
                      :error-msg="registrationErrors.email"
+                     white-bg
                      placeholder="placeholder.EMAIL"/>
 
             <c-input v-model="registrationForm.password"
                      :error-msg="registrationErrors.password"
+                     white-bg
                      type="password"
                      placeholder="placeholder.PASSWORD"/>
 
             <c-input v-model="registrationForm.repeatPassword"
                      :error-msg="registrationErrors.repeatPassword"
+                     white-bg
                      type="password"
                      placeholder="placeholder.REPEAT_PASSWORD"/>
 
             <c-input v-model="registrationForm.registrationCode"
                      :error-msg="registrationErrors.registrationCode"
+                     white-bg
                      placeholder="placeholder.CODE_FROM_EMAIL"/>
           </div>
 
