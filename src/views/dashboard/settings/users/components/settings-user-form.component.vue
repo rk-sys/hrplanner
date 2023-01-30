@@ -38,14 +38,17 @@ const props = defineProps({
 
       <c-input v-model="user.firstName"
                :error-msg="error.firstName"
+               white-bg
                placeholder="placeholder.FIRST_NAME" />
 
       <c-input v-model="user.lastName"
                :error-msg="error.lastName"
+               white-bg
                placeholder="placeholder.LAST_NAME" />
 
       <c-input v-model="user.email"
                :error-msg="error.email"
+               white-bg
                placeholder="placeholder.EMAIL" />
 
       <div class="flex justify-between p-3">

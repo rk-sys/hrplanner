@@ -11,4 +11,5 @@ export default {
   'title.NO': 'No.',
   'title.REGISTRATION': 'Rejestracja',
   'title.REMOVE_USER': 'Usuń użytkownika',
+  'title.CONFIGURATION_TAG': 'Konfiguracja tagów',
 }

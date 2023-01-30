@@ -23,6 +23,7 @@ const { email, errorMsg, sendCode } = useRegistrationCode();
 
           <c-input v-model="email"
                    :error-msg="errorMsg"
+                   white-bg
                    placeholder="placeholder.EMAIL"/>
 
           <span class="text-center pt-2 px-12 pb-5 md:px-2">

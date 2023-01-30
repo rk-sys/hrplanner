@@ -13,6 +13,10 @@ const props = defineProps({
   placeholder: {
     type: String,
     default: '',
+  },
+  whiteBg: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -52,8 +56,9 @@ const isPlaceholderTop = computed(() => {
 
       <span v-if="placeholder"
             @click="focusInput"
-            :class="[isPlaceholderTop ? 'top-0' : 'top-1/2' ]"
-            class="text-lg leading-4 duration-100 p-2 py-1 absolute left-4 -translate-y-1/2 bg-white text-neutral-500">
+            class="text-lg leading-4 duration-100 p-2 py-1 absolute left-4 -translate-y-1/2 bg-white text-neutral-500 dark:bg-dark-500"
+            :class="[isPlaceholderTop ? 'top-0' : 'top-1/2', { 'dark:bg-white' : whiteBg } ]">
+
         {{ $t(`${placeholder}`) }}</span>
     </div>
 
@@ -63,7 +68,3 @@ const isPlaceholderTop = computed(() => {
     </span>
   </div>
 </template>
-
-<style scoped>
-
-</style>

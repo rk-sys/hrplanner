@@ -21,10 +21,12 @@ const { form, errorMsg, loginUser, goToRegistrationPage } = useLogin();
               @submit.prevent="loginUser">
 
           <c-input v-model="form.login"
+                   white-bg
                    :error-msg="errorMsg.login"
                    placeholder="login"/>
 
           <c-input v-model="form.password"
+                   white-bg
                    :error-msg="errorMsg.password"
                    placeholder="password"
                    type="password"/>

@@ -11,6 +11,7 @@ import vSettingsUsers from '@/views/dashboard/settings/users/settings-users.view
 import vDashboard from '@/views/dashboard/dashboard.view.vue'
 import vResetPassword from '@/views/reset-password/reset-password.view.vue'
 import vNewPassword from '@/views/reset-password/new-password.view.vue'
+import vConfigurations from '@/views/dashboard/settings/configurations/configurations.view.vue'
 
 const availablePages = ['Login', 'Registration', 'Registration code', 'Registration info', 'Reset password', 'New password']
 
@@ -70,11 +71,21 @@ const routes = [
             path: 'users',
             name: 'Settings my users',
             component: vSettingsUsers
+          },
+          {
+            path: 'configurations',
+            name: 'Configurations',
+            component: vConfigurations
           }
         ]
       }
     ]
-  }
+  },
+  {
+    path: '/',
+    name: '',
+    redirect: () =>({name: 'Dashboard'})
+  },
 ]
 
 const router: Router = createRouter({
@@ -95,8 +106,22 @@ axios.interceptors.request.use((config) => {
   }
 });
 
+axios.interceptors.response.use(async (response) => {
+  // Any status code that lie within the range of 2xx cause this function to trigger
+  // Do something with response data
+  return response;
+}, async (error) => {
+  const store = useGlobalStore();
 
-router.beforeEach(async (to, form, next) => {
+  if(error.response.status === 401) {
+    await store.signOut()
+  }
+  // Any status codes that falls outside the range of 2xx cause this function to trigger
+  // Do something with response error
+  return Promise.reject(error);
+});
+
+router.beforeEach(async (to, from, next) => {
   const store = useGlobalStore()
 
   if (store.isAuthenticated()) {

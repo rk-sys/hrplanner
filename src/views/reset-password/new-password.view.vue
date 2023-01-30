@@ -22,11 +22,13 @@ const { newPassword, errorMsgPassword, checkNewPasswordForm } = useResetPassword
 
           <c-input v-model="newPassword.password"
                    type="password"
+                   white-bg
                    :error-msg="errorMsgPassword.password"
                    :placeholder="$t('placeholder.PASSWORD')" />
 
           <c-input v-model="newPassword.repeatPassword"
                    type="password"
+                   white-bg
                    :error-msg="errorMsgPassword.repeatPassword"
                    :placeholder="$t('placeholder.REPEAT_PASSWORD')" />
 

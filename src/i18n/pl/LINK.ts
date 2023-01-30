@@ -10,6 +10,7 @@ export default {
   'link.UPDATE': 'Aktualizuj',
   'link.USERS': 'Użytkownicy',
   'link.USER_NAME': 'Użytkownik',
+  'link.TAGS': 'Tagi',
   'link.en': 'EN',
   'link.pl': 'PL',
 }

@@ -8,4 +8,5 @@ export default {
   'placeholder.LOGIN': 'Login',
   'placeholder.PASSWORD': 'Hasło',
   'placeholder.REPEAT_PASSWORD': 'Powtórzy hasło',
+  'placeholder.ADD_TAG': 'Dodaj nowy tag',
 }
