@@ -1,6 +1,6 @@
 export default {
   'common.ACTIVE': 'Aktywny',
-  'common.ARE_YOU_SURE_{firstName}_{lastName}_SHOULD_BE_DELETE?': 'Czy na pewno chcesz usunąć {firstName} {lastName}?',
+  'common.ARE_YOU_SURE_SHOULD_BE_DELETE?': 'Czy na pewno chcesz usunąć {firstName} {lastName}?',
   'common.BACK_TO_LOGIN_PAGE': 'Wróć do strony logowania',
   'common.BETTER_QUALITY_OF_WORK': 'Lepsza jakość pracy',
   'common.FORGOT_PASSWORD': 'Zapomniałeś hasła?',

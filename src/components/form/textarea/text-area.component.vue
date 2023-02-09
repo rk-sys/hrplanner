@@ -17,10 +17,6 @@ const props = defineProps({
   whiteBg: {
     type: Boolean,
     default: false
-  },
-  type: {
-    type: String,
-    default: 'text'
   }
 })
 
@@ -50,15 +46,15 @@ const isPlaceholderTop = computed(() => {
   <div class="p-3 relative">
 
     <div class="relative">
-      <input ref="input"
-             :class="[isError ? 'border-rose-500' : 'border-primary']"
-             :value="modelValue"
-             :type="type"
-             @input="$emit('update:modelValue', handleInputChange($event))"
-             @focus="isFocus = true"
-             @focusout="isFocus = false"
-             autocomplete="new-password"
-             class="rounded-sm h-[42px] py-0 focus:border-primary-500 border bg-transparent px-2 outline-none w-full text-base d-flex items-center disabled:opacity-75"/>
+      <textarea ref="input"
+                v-bind="$attrs"
+                :class="[isError ? 'border-rose-500' : 'border-primary']"
+                :value="modelValue"
+                @input="$emit('update:modelValue', handleInputChange($event))"
+                @focus="isFocus = true"
+                @focusout="isFocus = false"
+                autocomplete="new-password"
+                class="rounded-sm py-2 focus:border-primary-500 border bg-transparent px-2 outline-none w-full text-base d-flex items-center disabled:opacity-75"/>
 
       <span v-if="placeholder"
             @click="focusInput"

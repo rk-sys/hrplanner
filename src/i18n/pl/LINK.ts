@@ -1,5 +1,6 @@
 export default {
   'link.CALENDAR': 'Kalendarz',
+  'link.CONTRACTORS': 'Kontrahenci',
   'link.DELETE': 'Usuń',
   'link.EMPLOYEES': 'Pracownicy',
   'link.HOME': 'Strona główna',
@@ -8,6 +9,7 @@ export default {
   'link.PROJECTS': 'Projekty',
   'link.SETTINGS': 'Ustawienia',
   'link.UPDATE': 'Aktualizuj',
+  'link.DETAILS': 'Szczegóły',
   'link.USERS': 'Użytkownicy',
   'link.USER_NAME': 'Użytkownik',
   'link.TAGS': 'Tagi',

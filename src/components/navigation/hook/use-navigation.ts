@@ -5,7 +5,7 @@ export const useNavigation = () => {
 	const links: Ref<Link[]> = ref([
 		{
 			name: 'Home',
-			label: 'HOME'
+			label: 'HOME',
 		},
 		{
 			name: 'Home',
@@ -13,11 +13,11 @@ export const useNavigation = () => {
 		},
 		{
 			name: 'Home',
-			label: 'PROJECTS'
+			label: 'CONTRACTORS'
 		},
 		{
-			name: 'Home',
-			label: 'CALENDAR'
+			name: 'Projects',
+			label: 'PROJECTS'
 		},
 	])
 

@@ -2,58 +2,44 @@ import { defineStore } from 'pinia'
 import { useI18n } from 'vue-i18n';
 import { Ref, ref } from 'vue';
 import { notify } from '@kyvg/vue3-notification';
-import { ConfigurationsItTechnologies } from './configurations.type'
+import { TConfigurationsItTechnologies } from './configurations.type'
 import axios from 'axios';
+import { transformToSelectList, sortAlphabetically } from '@/hooks/helpers';
+import { ExtendSelectList } from '@/components/form/extend-select/extend-select.types';
 
 export const useItTechnologies= defineStore('itTechnologiesStore', () => {
   const { t } = useI18n({ inheritLocale: true, useScope: 'local' })
 
-  const itTechnologies: Ref<ConfigurationsItTechnologies[]> = ref([])
+  const itTechnologies: Ref<ExtendSelectList[]> = ref([])
 
-  const setItTechnologies = (payload: ConfigurationsItTechnologies[]) => {
-    itTechnologies.value = payload.sort((a, b) => {
-      const nameA = a.technologyName;
-      const nameB = b.technologyName;
-      if (nameA < nameB) {
-        return -1
-      } else if (nameA > nameB) {
-        return 1
-      } else {
-        return 0
-      }
-    })
+  const setItTechnologies = (payload: TConfigurationsItTechnologies[]) => {
+    itTechnologies.value = sortAlphabetically(transformToSelectList(payload))
   }
 
   const getItTechnologies = async (): Promise<void> => {
     try {
-      const { data } : {data: ConfigurationsItTechnologies[]} = await axios.get('/api/ittechnologies')
+      const { data } : {data: TConfigurationsItTechnologies[]} = await axios.get('/api/ittechnologies')
       setItTechnologies(data)
     } catch (e) {
-      notify({ text: t(`${ e.response.data.message}`), type: 'error' })
-      console.error(e)
-    }
+      notify({ text: t(`${ e.response.data.message}`), type: 'error' })    }
   }
 
   const removeItTechnologie = async (value: string): Promise<void> => {
     try {
-      const { data }: { data: ConfigurationsItTechnologies[] } = await axios.delete('/api/ittechnologies', { data: { technologyUuid: value } })
+      const { data }: { data: TConfigurationsItTechnologies[] } = await axios.delete('/api/ittechnologies', { data: { technologyUuid: value } })
       setItTechnologies(data)
       notify({ text: t('notify.configuration.DELETE_TECHNOLOGIE'), type: 'success' })
     } catch (e) {
-      notify({ text: t(`${ e.response.data.message}`), type: 'error' })
-      console.error(e)
-    }
+      notify({ text: t(`${ e.response.data.message}`), type: 'error' })    }
   }
 
   const createItTechnologie = async (value: string): Promise<void> => {
     try {
-      const { data }: { data: ConfigurationsItTechnologies[] } = await axios.post('/api/ittechnologies', { technologyName: value  })
+      const { data }: { data: TConfigurationsItTechnologies[] } = await axios.post('/api/ittechnologies', { technologyName: value  })
       setItTechnologies(data)
       notify({ text: t('notify.configuration.CREATE_TECHNOLOGIE'), type: 'success' })
     } catch (e) {
-      notify({ text: t(`${ e.response.data.message}`), type: 'error' })
-      console.error(e)
-    }
+      notify({ text: t(`${ e.response.data.message}`), type: 'error' })    }
   }
 
   return {

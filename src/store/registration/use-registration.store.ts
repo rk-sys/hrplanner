@@ -1,8 +1,8 @@
-import { reactive, ref, Ref } from "vue";
+import { reactive } from "vue";
 import axios from 'axios'
 import { defineStore } from 'pinia'
 import { useRouter } from 'vue-router';
-import { TRegistrationForm } from '../registration.types';
+import { TRegistrationForm } from './registration.types';
 import { notify } from '@kyvg/vue3-notification';
 import { useI18n } from 'vue-i18n';
 
@@ -46,7 +46,6 @@ export const useRegistrationStore = defineStore('registrationStore', () => {
       await router.push({ name: 'Registration info' })
     } catch (e) {
       notify({ text: t(`${ e.response.data.message }`), type: 'error'})
-      console.error(e)
     }
   }
 
@@ -57,7 +56,6 @@ export const useRegistrationStore = defineStore('registrationStore', () => {
       await router.push({ name: 'Login' })
     } catch (e) {
       notify({ text: t(`${ e.response.data.message }`), type: 'error'})
-      console.error(e)
     }
   }
 

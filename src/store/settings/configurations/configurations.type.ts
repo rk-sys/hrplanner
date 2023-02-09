@@ -1,19 +1,19 @@
-export type ConfigurationsItTechnologies = {
+export type TConfigurationsItTechnologies = {
   technologyUuid: string,
   technologyName: string
 }
 
-export type ConfigurationsProfessions = {
+export type TConfigurationsProfessions = {
   professionUuid: string,
   professionName: string
 }
 
-export type ConfigurationsLevels = {
+export type TConfigurationsLevels = {
   levelUuid: string,
   levelName: string
 }
 
-export type ConfigurationsLanguages = {
+export type TConfigurationsLanguages = {
   languageUuid: string,
   languageName: string
 }

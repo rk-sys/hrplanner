@@ -9,5 +9,6 @@ export default {
   'button.SAVE': 'Zapisz',
   'button.UPDATE': 'Zaktualizuj',
   'button.RESET_EMAIL': 'Zresetuj hasło',
-  'button.CONFIRM_PASSWORD': 'Zatwierdź hasło'
+  'button.CONFIRM_PASSWORD': 'Zatwierdź hasło',
+  'button.CREATE_PROJECT': 'Stwórz nowy projekt'
 }

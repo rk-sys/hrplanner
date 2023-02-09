@@ -21,6 +21,8 @@ const props = defineProps({
   }
 })
 
+const handleInputChange = (event: Event) => (event.target as HTMLInputElement).value
+
 const availableList = computed(() => {
   if(props.modelValue) {
     return props.list.filter((element) => element.label.toLowerCase().indexOf(props.modelValue.toLowerCase()) !== -1);
@@ -41,7 +43,7 @@ const availableList = computed(() => {
 
     <c-input class="mb-0 mt-1 w-full py-0"
              v-model="modelValue"
-             @input="$emit('update:modelValue', $event.target.value)"
+             @input="$emit('update:modelValue', handleInputChange($event))"
              placeholder="placeholder.ADD_TAG"/>
 
     <div class="flex flex-wrap max-h-60 overflow-y-auto my-4 mx-3">
