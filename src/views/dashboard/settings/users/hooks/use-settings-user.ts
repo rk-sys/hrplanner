@@ -8,7 +8,7 @@ export const useSettingsUser = () => {
   const store = useSettingsUsers();
   store.getUsers();
 
-  const { users }: TSettingsUsers = storeToRefs(store);
+  const { users } = storeToRefs(store);
 
   const showSettingsUserModal = ref(false)
 
@@ -96,7 +96,7 @@ export const useSettingsUser = () => {
 
   const cancelDeletingUser = (): void => {
     showSettingsDeleteModal.value = false;
-    userToDelete.active = '';
+    userToDelete.active = false;
     userToDelete.email = '';
     userToDelete.firstName = '';
     userToDelete.lastName = '';

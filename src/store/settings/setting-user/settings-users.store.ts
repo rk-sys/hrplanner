@@ -26,7 +26,6 @@ export const useSettingsUsers = defineStore('settingsUsers', () => {
       });
     } catch (e) {
       notify({ text: t(`${ e.response.data.message}`), type: 'error' })
-      console.error(e)
     }
   }
 
@@ -38,7 +37,6 @@ export const useSettingsUsers = defineStore('settingsUsers', () => {
       return true
     } catch (e) {
       notify({ text: t(`${ e.response.data.message}`), type: 'error' })
-      console.error(e)
       return false
     }
   }
@@ -51,7 +49,6 @@ export const useSettingsUsers = defineStore('settingsUsers', () => {
       return true
     } catch (e) {
       notify({ text: t(`${ e.response.data.message}`), type: 'error' })
-      console.error(e)
       return false
     }
   }
@@ -63,7 +60,6 @@ export const useSettingsUsers = defineStore('settingsUsers', () => {
       notify({ text: t('user has been deleted'), type: 'success'})
     } catch (e) {
       notify({ text: t(`${ e.response.data.message }`), type: 'error'})
-      throw new Error(e)
     }
   }
 

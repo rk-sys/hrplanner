@@ -31,7 +31,7 @@ onBeforeUnmount(() => {
     <div v-bind="$attrs"
          @click.self="$emit('closeModal')"
          @keyup.esc="$emit('closeModal')"
-         class="top-0 left-0 absolute w-full h-full bg-overlay z-10 flex justify-center items-center">
+         class="top-0 left-0 w-full h-full fixed bg-overlay z-10 flex justify-center items-center">
 
       <div class="min-w-[34rem] h-auto bg-white text-black">
         <header class="px-5 py-2 flex justify-between">
@@ -48,7 +48,3 @@ onBeforeUnmount(() => {
     </div>
   </Teleport>
 </template>
-
-<style scoped>
-
-</style>

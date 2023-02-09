@@ -3,7 +3,7 @@ import { PropType } from 'vue'
 import cModal from '@/components/modal/modal.component.vue'
 import cInput from '@/components/form/input/input.component.vue'
 import cButton from '@/components/form/button/button.component.vue'
-import { TSettingsUsers, TUser } from '@/store/setting-user/settings-user.types';
+import { TSettingsUsers, TUser } from '@/store/settings/setting-user/settings-user.types';
 
 const emit = defineEmits(['closeModal', 'createUser', 'updateUser'])
 
@@ -31,11 +31,10 @@ const props = defineProps({
 
 <template>
   <c-modal v-if="showModal"
-           title="title.NEW_USER"
+           :title="mode === `create` ? `title.NEW_USER` : `title.UPDATE_USER`"
            @close-modal="$emit('closeModal')">
 
-    <form @submit.prevent="saveChanges">
-
+    <form>
       <c-input v-model="user.firstName"
                :error-msg="error.firstName"
                white-bg

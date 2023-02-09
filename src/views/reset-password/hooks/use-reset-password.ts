@@ -4,6 +4,7 @@ import { reactive, ref, watch } from 'vue';
 import { validateEmail, validateSame, validateField } from '@/hooks/use-rules';
 import { notify } from '@kyvg/vue3-notification';
 import { useI18n } from 'vue-i18n';
+import { checkErrors } from '@/hooks/helpers';
 
 export const useResetPassword = () => {
 
@@ -61,15 +62,7 @@ export const useResetPassword = () => {
     validateEmail(form.email) ? errorMsg.email = 'wrong email' : errorMsg.email = ''
     validateEmail(form.repeatEmail) ? errorMsg.repeatEmail = 'wrong email' : errorMsg.repeatEmail = ''
 
-    const noError = ref(true)
-    for(const [_, value] of Object.entries(errorMsg)){
-      if(value !== '') {
-        noError.value = false
-        break;
-      }
-    }
-
-    if(noError.value) {
+    if(checkErrors(errorMsg)) {
       try {
         await axios.get('/api/auth/reset-password-token',{
           params: {
@@ -80,7 +73,6 @@ export const useResetPassword = () => {
         isLinkOnMail.value = true
       } catch (e) {
         notify({ text: t(`${ e.response.data.message }`), type: 'error'})
-        console.error(e)
       }
     }
   }
@@ -91,23 +83,14 @@ export const useResetPassword = () => {
     errorMsgPassword.repeatPassword = validateField('password', newPassword.repeatPassword, 6)
     errorMsgPassword.repeatPassword = validateSame('password', newPassword.password, newPassword.repeatPassword)
 
-    const noError = ref(true)
-    for(const [_, value] of Object.entries(errorMsgPassword)){
-      if(value !== '') {
-        noError.value = false
-        break;
-      }
-    }
-
     const token = router.currentRoute.value.query.token
-    if(noError.value) {
+    if(checkErrors(errorMsgPassword)) {
       try {
         const { data } = await axios.get('/api/auth/validate-token', {
           params: {
             token: token
           }
         })
-        console.log('NEW TOKEN',data)
         await axios.put('/api/auth/reset-password', {
           authUuid: data,
           password: newPassword.password,
@@ -117,7 +100,6 @@ export const useResetPassword = () => {
         await router.push({ name: 'Login'})
       } catch (e) {
         notify({ text: t(`${ e.response.data.message }`), type: 'error'})
-        console.error(e)
       }
     }
   }

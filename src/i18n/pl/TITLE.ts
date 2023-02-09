@@ -8,8 +8,13 @@ export default {
   'title.MY_USERS': 'Moi użytkownicy',
   'title.NEW_ACCOUNT': 'Nowe konto',
   'title.NEW_USER': 'Nowy użytkownik',
+  'title.UPDATE_USER': 'Aktualizacja użytkownika',
+  'title.NEW_PROJECT': 'Nowy projekt',
   'title.NO': 'No.',
+  'title.UPDATE_PROJECT': 'Aktualizacja projektu',
   'title.REGISTRATION': 'Rejestracja',
   'title.REMOVE_USER': 'Usuń użytkownika',
   'title.CONFIGURATION_TAG': 'Konfiguracja tagów',
+  'title.REMOVE_PROJECT': 'Usuń projekt',
+  'title.MY_PROJECTS': 'Moje projekty'
 }

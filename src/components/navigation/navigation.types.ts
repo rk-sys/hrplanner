@@ -1,4 +1,5 @@
 export type Link = {
-  name: String,
-  label: String
+  name: string,
+  label: string
+  icon?: string
 }

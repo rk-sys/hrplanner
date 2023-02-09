@@ -1,7 +1,7 @@
-import { ref, watch } from 'vue';
+import { watch } from 'vue';
 import { validateEmail, validateSame, validateField } from '@/hooks/use-rules';
 import { useRegistrationStore } from '@/store/registration/use-registration.store';
-
+import { checkErrors } from '@/hooks/helpers'
 export const useRegistrationInfo = () => {
 
   const {
@@ -62,15 +62,7 @@ export const useRegistrationInfo = () => {
 
     registrationErrors.registrationCode = validateField('code from email', registrationForm.registrationCode, 12)
 
-    const noError = ref(true)
-    for(const [_, value] of Object.entries(registrationErrors)){
-      if(value !== '') {
-        noError.value = false
-        break;
-      }
-    }
-
-    if(noError.value) {
+    if(checkErrors(registrationErrors)) {
       registrationNewAccount(registrationForm);
     }
   }

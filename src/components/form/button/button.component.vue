@@ -20,7 +20,7 @@ const props = defineProps({
 
 <template>
   <button
-      class="rounded-sm w-full py-3 uppercase outline-none hover:outline-none focus:outline-none text-white font-semibold text-center disabled:opacity-75"
+      class="ease-in-out duration-200 rounded-sm w-full py-2 uppercase outline-none hover:outline-none focus:outline-none text-white font-semibold text-center disabled:opacity-75"
       :class="[buttonState, buttonType]">
     <slot/>
   </button>

@@ -1,6 +1,8 @@
 export default {
   'placeholder.CODE_FROM_EMAIL': 'Kod z e-mail',
   'placeholder.COMPANY': 'Nazwa firma',
+  'placeholder.PROJECT_NAME': 'Nazwa projektu',
+  'placeholder.PROJECT_CLIENT': 'Nazwa kontrahenta',
   'placeholder.EMAIL': 'Email',
   'placeholder.REPEAT_EMAIL': 'Powtórz email',
   'placeholder.FIRST_NAME': 'Imię',
@@ -9,4 +11,10 @@ export default {
   'placeholder.PASSWORD': 'Hasło',
   'placeholder.REPEAT_PASSWORD': 'Powtórzy hasło',
   'placeholder.ADD_TAG': 'Dodaj nowy tag',
+  'placeholder.SEARCH_PROJECT': 'Szukaj projekt',
+  'placeholder.CHOOSE_TECHNOLOGIES': 'Wybierz technologie',
+  'placeholder.DATE_END': 'Data zakończenia - dd/mm/yyyy',
+  'placeholder.DATE_START': 'Data rozpoczęcia - dd/mm/yyyy',
+  'placeholder.TOPIC': 'Temat',
+  'placeholder.DESCRIPTION': 'Opis'
 }

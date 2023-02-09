@@ -1,4 +1,4 @@
-export const isRequired = (value: string): boolean => {
+export const isRequired = (value: string | undefined): boolean => {
 	return !!value && !!value.trim()
 }
 
@@ -11,7 +11,7 @@ export const validateEmail = (email: string): boolean => {
 	return !email.match(validRegex)
 };
 
-export const validateField = (field: string, newValue: string, min: number): string => {
+export const validateField = (field: string, newValue: string | undefined, min: number): string => {
 	if(!newValue) {
 		return `validation.FIELD_IS_REQUIRED`
 	} else if (newValue.length < min) {
@@ -23,4 +23,13 @@ export const validateField = (field: string, newValue: string, min: number): str
 
 export const validateSame = (filed: string, a: string, b: string): string => {
 	return a !== '' && a === b ? '' : `validation.FIELD_DO_NOT_MATCH`
+}
+
+export const checkDatePattern = (payload: string | undefined) => {
+	const pattern = new RegExp(/^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/)
+	if(payload) {
+		return pattern.test(payload)
+	}
+
+	return false
 }

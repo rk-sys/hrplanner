@@ -42,7 +42,6 @@ export const useLogin = () => {
         await router.push({ name: 'Dashboard' })
       } catch (e) {
         notify({ text: t(`${ e.response.data.message }`), type: 'error'})
-        throw new Error()
       }
     }
   }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, Ref, ref } from 'vue'
+import { Ref, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useItTechnologies } from '@/store/settings/configurations/it-technologies.store'
 import { useProfessions } from '@/store/settings/configurations/professions.store'
@@ -9,10 +9,10 @@ import cExtendSelect from '@/components/form/extend-select/extend-select.compone
 import cListOfTags from '@/components/list-of-tags/list-of-tags.component.vue'
 import cPageTitle from '@/components/page-title/page-title.component.vue'
 import {
-  ConfigurationsItTechnologies,
-  ConfigurationsProfessions,
-  ConfigurationsLanguages,
-  ConfigurationsLevels } from '@/store/settings/configurations/configurations.type';
+  TConfigurationsItTechnologies,
+  TConfigurationsProfessions,
+  TConfigurationsLanguages,
+  TConfigurationsLevels } from '@/store/settings/configurations/configurations.type';
 
 const storeTechnologies = useItTechnologies()
 const storeProfessions = useProfessions()
@@ -53,22 +53,6 @@ const professionValue: Ref = ref('')
 const levelValue: Ref = ref('')
 const languageValue: Ref = ref('')
 
-const technologies = computed(() => {
-  return itTechnologies.value.map((element: ConfigurationsItTechnologies) => ({label: element.technologyName, uuid: element.technologyUuid}))
-})
-
-const professionList = computed(() => {
-  return professions.value.map((element: ConfigurationsProfessions) => ({label: element.professionName, uuid: element.professionUuid}))
-})
-
-const levelList = computed(() => {
-  return levels.value.map((element: ConfigurationsLevels) => ({label: element.levelName, uuid: element.levelUuid}))
-})
-
-const languageList = computed(() => {
-  return languages.value.map((element: ConfigurationsLanguages) => ({label: element.languageName, uuid: element.languageUuid}))
-})
-
 const createTechnologie = () => {
   createItTechnologie(itTechnologieValue.value)
   itTechnologieValue.value = ''
@@ -98,25 +82,25 @@ const createLang = () => {
 
   <div class="flex flex-wrap justify-evenly md:justify-between">
 
-    <c-list-of-tags :list="technologies"
+    <c-list-of-tags :list="itTechnologies"
                     title="IT_TECHNOLOGIES"
                     v-model="itTechnologieValue"
                     @remove-item="removeItTechnologie"
                     @keyup.enter="createTechnologie" />
 
-    <c-list-of-tags :list="professionList"
+    <c-list-of-tags :list="professions"
                     title="PROFESSIONS"
                     v-model="professionValue"
                     @remove-item="removeProfession"
                     @keyup.enter="createProf" />
 
-    <c-list-of-tags :list="levelList"
+    <c-list-of-tags :list="levels"
                     title="LEVELS"
                     v-model="levelValue"
                     @remove-item="removeLevel"
                     @keyup.enter="createLvl" />
 
-    <c-list-of-tags :list="languageList"
+    <c-list-of-tags :list="languages"
                     title="LANGUAGES"
                     v-model="languageValue"
                     @remove-item="removeLanguage"

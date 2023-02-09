@@ -1,4 +1,5 @@
 export default {
+  'notify.USER_HAS_BEEN_LOGOUT': 'Zostałeś wylogowany',
   'notify.ACCOUNT_HAS_BEEN_CREATED': 'Nowe konto zostało utworzone',
   'notify.RESET_PASSWORD_LINK': 'Link został wysłany na adres e-amil',
   'notify.RESET_PASSWORD_SUCCESS': 'Hasło zostało zmienione',
@@ -10,4 +11,10 @@ export default {
   'notify.configuration.CREATE_LANGUAGE': 'Język został utworzony',
   'notify.configuration.CREATE_LEVEL': 'Poziom został utworzony',
   'notify.configuration.DELETE_LEVEL': 'Poziom został usunięty',
+  'notify.NOT_FOUND_PROJECTS': 'Nie znaleziono projektu',
+  'notify.PROJECT_NOT_BEEN_CREATED': 'Projekt nie został stworzony',
+  'notify.PROJECT_NOT_BEEN_UPDATED': 'Projekt nie został zaktualizowany',
+  'notify.PROJECT_NOT_BEEN_DELETE': 'Projekt nie został usunięty',
+  'notify.PROJECT_HAS_BEEN_CREATED': 'Projekt został utworzony',
+  'notify.PROJECT_HAS_BEEN_UPDATED': 'Projekt został zaktualizowany',
 }

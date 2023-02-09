@@ -12,6 +12,7 @@ import vDashboard from '@/views/dashboard/dashboard.view.vue'
 import vResetPassword from '@/views/reset-password/reset-password.view.vue'
 import vNewPassword from '@/views/reset-password/new-password.view.vue'
 import vConfigurations from '@/views/dashboard/settings/configurations/configurations.view.vue'
+import vProjects from '@/views/dashboard/projects/projects.view.vue'
 
 const availablePages = ['Login', 'Registration', 'Registration code', 'Registration info', 'Reset password', 'New password']
 
@@ -62,6 +63,11 @@ const routes = [
         component: vHome
       },
       {
+        path: 'projects',
+        name: 'Projects',
+        component: vProjects
+      },
+      {
         path: '/settings',
         name: 'Settings',
         component: vSettings,
@@ -93,6 +99,7 @@ const router: Router = createRouter({
   routes
 })
 
+// @ts-ignore
 axios.interceptors.request.use((config) => {
   const store = useGlobalStore();
   if (config && config.url && (config.url.includes('signIn') || config.url.includes('registration') || config.url.includes('reset-password'))) {
@@ -118,7 +125,7 @@ axios.interceptors.response.use(async (response) => {
   }
   // Any status codes that falls outside the range of 2xx cause this function to trigger
   // Do something with response error
-  return Promise.reject(error);
+  // return Promise.reject(error);
 });
 
 router.beforeEach(async (to, from, next) => {

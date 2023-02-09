@@ -1,4 +1,4 @@
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia';
 import { useRouter } from 'vue-router';
 
@@ -36,13 +36,13 @@ export const useGlobalStore = defineStore('globalStore', () => {
   }
 
   return {
-    token,
-    languages,
     activeLang,
-    signOut,
-    setToken,
     changeLanguage,
     isAuthenticated,
-    setTokenFromSession
+    languages,
+    setToken,
+    setTokenFromSession,
+    signOut,
+    token,
   }
 })
