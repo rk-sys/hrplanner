@@ -13,7 +13,7 @@ import vResetPassword from '@/views/reset-password/reset-password.view.vue'
 import vNewPassword from '@/views/reset-password/new-password.view.vue'
 import vConfigurations from '@/views/dashboard/settings/configurations/configurations.view.vue'
 import vProjects from '@/views/dashboard/projects/projects.view.vue'
-
+import vEmployees from '@/views/dashboard/employees/employees.view.vue'
 const availablePages = ['Login', 'Registration', 'Registration code', 'Registration info', 'Reset password', 'New password']
 
 const routes = [
@@ -61,6 +61,11 @@ const routes = [
         path: 'home',
         name: 'Home',
         component: vHome
+      },
+      {
+        path: 'employees',
+        name: 'Employees',
+        component: vEmployees
       },
       {
         path: 'projects',

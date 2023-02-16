@@ -12,9 +12,16 @@ export default {
   'placeholder.REPEAT_PASSWORD': 'Powtórzy hasło',
   'placeholder.ADD_TAG': 'Dodaj nowy tag',
   'placeholder.SEARCH_PROJECT': 'Szukaj projekt',
+  'placeholder.SEARCH_EMPLOYEE': 'Szukaj pracownika',
   'placeholder.CHOOSE_TECHNOLOGIES': 'Wybierz technologie',
+  'placeholder.CHOOSE_LANGUAGES': 'Wybierz język',
+  'placeholder.CHOOSE_PROJECTS': 'Wybierz projekt',
   'placeholder.DATE_END': 'Data zakończenia - dd/mm/yyyy',
   'placeholder.DATE_START': 'Data rozpoczęcia - dd/mm/yyyy',
   'placeholder.TOPIC': 'Temat',
-  'placeholder.DESCRIPTION': 'Opis'
+  'placeholder.DESCRIPTION': 'Opis',
+  'placeholder.BIRTH_DAY': 'Data urodzin - dd/mm/yyyy',
+  'placeholder.EXPERIENCE': 'Doświadczenie - dd/mm/yyyy',
+  'placeholder.CHOOSE_PROFESSION': 'Wybierz stanowisko',
+  'placeholder.CHOOSE_LEVEL': 'Wybierz poziom',
 }

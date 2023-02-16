@@ -12,9 +12,12 @@ export default {
   'notify.configuration.CREATE_LEVEL': 'Poziom został utworzony',
   'notify.configuration.DELETE_LEVEL': 'Poziom został usunięty',
   'notify.NOT_FOUND_PROJECTS': 'Nie znaleziono projektu',
+  'notify.NOT_FOUND_EMPLOYEES': 'Nie znaleziono pracowników',
   'notify.PROJECT_NOT_BEEN_CREATED': 'Projekt nie został stworzony',
+  'notify.EMPLOYEE_NOT_BEEN_CREATED': 'Pracownik nie został stworzony',
   'notify.PROJECT_NOT_BEEN_UPDATED': 'Projekt nie został zaktualizowany',
   'notify.PROJECT_NOT_BEEN_DELETE': 'Projekt nie został usunięty',
   'notify.PROJECT_HAS_BEEN_CREATED': 'Projekt został utworzony',
+  'notify.EMPLOYEE_HAS_BEEN_CREATED': 'Pracownik został utworzony',
   'notify.PROJECT_HAS_BEEN_UPDATED': 'Projekt został zaktualizowany',
 }

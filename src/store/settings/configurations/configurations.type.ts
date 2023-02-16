@@ -17,3 +17,11 @@ export type TConfigurationsLanguages = {
   languageUuid: string,
   languageName: string
 }
+
+export type TConfigurationsProjects = {
+  projectUuid: string
+  name: string
+  client: string
+  dateEnd: string
+  dateStart: string
+}

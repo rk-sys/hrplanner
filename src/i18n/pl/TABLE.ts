@@ -7,5 +7,9 @@ export default {
   'table.TOPIC': 'Temat',
   'table.NO': 'No.',
   'table.DATE_START': 'Data rozpoczęcia',
-  'table.DATE_END': 'Data zakończenia'
+  'table.DATE_END': 'Data zakończenia',
+  'table.FIRST_NAME': 'Imię',
+  'table.LAST_NAME': 'Nazwisko',
+  'table.PROFESSION': 'Stanowisko',
+  'table.LEVEL': 'Poziom',
 }

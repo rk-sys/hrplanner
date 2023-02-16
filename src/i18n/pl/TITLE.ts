@@ -5,7 +5,7 @@ export default {
   'title.FIRST_NAME': 'Imię',
   'title.INACTIVE': 'Nieaktywny',
   'title.LAST_NAME': 'Nazwisko',
-  'title.MY_USERS': 'Moi użytkownicy',
+  'title.MY_USERS': 'Użytkownicy',
   'title.NEW_ACCOUNT': 'Nowe konto',
   'title.NEW_USER': 'Nowy użytkownik',
   'title.UPDATE_USER': 'Aktualizacja użytkownika',
@@ -16,5 +16,7 @@ export default {
   'title.REMOVE_USER': 'Usuń użytkownika',
   'title.CONFIGURATION_TAG': 'Konfiguracja tagów',
   'title.REMOVE_PROJECT': 'Usuń projekt',
-  'title.MY_PROJECTS': 'Moje projekty'
+  'title.MY_PROJECTS': 'Projekty',
+  'title.MY_EMPLOYEES': 'Pracownicy',
+  'title.CREATE_NEW_EMPLOYEE': 'Nowy pracownik'
 }
