@@ -3,7 +3,7 @@ import {
   TConfigurationsItTechnologies,
   TConfigurationsLevels,
   TConfigurationsLanguages,
-  TConfigurationsProfessions
+  TConfigurationsProfessions, TConfigurationsProjects
 } from '@/store/settings/configurations/configurations.type';
 import { ExtendSelectList } from '@/components/form/extend-select/extend-select.types';
 
@@ -45,7 +45,7 @@ export const sortAlphabetically = (payload: ExtendSelectList[]): ExtendSelectLis
   })
 }
 
-export const transformToSelectList = (payload: TConfigurationsItTechnologies[] | TConfigurationsProfessions[] | TConfigurationsLevels[] | TConfigurationsLanguages[]): ExtendSelectList[] => {
+export const transformToSelectList = (payload: TConfigurationsProjects[] | TConfigurationsItTechnologies[] | TConfigurationsProfessions[] | TConfigurationsLevels[] | TConfigurationsLanguages[]): ExtendSelectList[] => {
 
   if(Array.isArray(payload) && payload[0]) {
     const keys = Object.keys(payload[0])

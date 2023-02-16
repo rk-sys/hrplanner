@@ -89,7 +89,7 @@ const showDeleteModal = ref(false)
     <c-page-title title="title.MY_PROJECTS"
                   class="mb-8">
 
-      <c-button class="my-3 max-w-xs px-6"
+      <c-button class="max-w-xs px-6"
                 button-type="ghost"
                 @click="triggerModal">{{ $t('button.CREATE_PROJECT') }}</c-button>
     </c-page-title>

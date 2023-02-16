@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onBeforeMount, onBeforeUnmount, PropType, ref } from 'vue'
-import { ExtendSelectList } from './extend-select.types'
+import { ExtendSelectList } from '@/components/form/extend-select/extend-select.types'
 import { ChevronDownIcon } from '@heroicons/vue/24/solid'
 import { CheckIcon } from '@heroicons/vue/24/solid'
 
@@ -20,10 +20,6 @@ const props = defineProps({
     type: Array as PropType<ExtendSelectList[]>,
     default: []
   },
-  selectedList: {
-    type: Array as PropType<ExtendSelectList[]>,
-    default: []
-  },
   placeholder: {
     type: String,
     default: ''
@@ -37,10 +33,18 @@ const props = defineProps({
 const emit = defineEmits(['clickItem', 'update:modelValue'])
 
 const input = ref<HTMLElement | null>(null)
-const list = ref<HTMLElement | null>(null)
 const isFocus = ref(false);
 
 const handleInputChange = (event: Event) => (event.target as HTMLInputElement).value
+
+const isError = computed(() => {
+  return props.errorMsg !== ''
+})
+
+const selected = computed(() => {
+  const item =  props.list.find((element) => element.uuid === props.modelValue)
+  return item ? item.label : ''
+})
 
 const isPlaceholderTop = computed(() => {
   return props.modelValue !== '' || isFocus.value
@@ -52,10 +56,6 @@ const availableList = computed(() => {
   } else {
     return props.list
   }
-})
-
-const isError = computed(() => {
-  return props.errorMsg !== ''
 })
 
 const checkClickedElement = (event: any): void => {
@@ -85,10 +85,6 @@ onBeforeUnmount(() => {
 
 const isSelected = (payload: string) => {
 
-  if(!!props.selectedList.length) {
-    const index = props.selectedList.findIndex(element => element.uuid === payload)
-    return index > -1
-  }
   return false
 }
 </script>
@@ -104,7 +100,7 @@ const isSelected = (payload: string) => {
       <input ref="input"
              :data-name="`${dataName}-input`"
              v-bind="$attrs"
-             :value="modelValue"
+             :value="selected"
              @input="$emit('update:modelValue', handleInputChange($event))"
              @keyup.enter="$emit('createItem', modelValue)"
              :class="{'border-primary-500' : isFocus}"
@@ -117,9 +113,6 @@ const isSelected = (payload: string) => {
               :class="[isPlaceholderTop ? 'top-0' : 'top-1/2', { 'dark:bg-white' : whiteBg } ]">
 
             {{ $t(`${placeholder}`) }}
-
-              <span v-if="selectedList.length"
-                    class="ml-2 text-primary-500 text-sm flex items-center font-semibold">({{ selectedList.length }})</span>
         </span>
 
 
@@ -141,8 +134,7 @@ const isSelected = (payload: string) => {
           ref="list"
           class="z-10 absolute max-h-80 overflow-y-auto overflow-x-hidden left-0 top-1 bg-white border-primary-500 border text-sm w-full text-left inline-block">
 
-        <template v-if="availableList.length">
-          <li v-for="item in availableList"
+          <li v-for="item in list"
               :key="item.uuid"
               :data-name="`${dataName}-list-item`"
               @click="$emit('clickItem', item.uuid)"
@@ -154,15 +146,6 @@ const isSelected = (payload: string) => {
             <check-icon v-show="isSelected(item.uuid)"
                         class="w-5 h-5"/>
           </li>
-        </template>
-
-        <template v-else>
-          <li data-attr="extend-select-list"
-              class="p-2 hover:bg-slate-400 hover:text-white dark:hover:bg-zinc-400">
-
-            {{ $t('common.NO_DATA') }}
-          </li>
-        </template>
       </ul>
     </div>
   </div>

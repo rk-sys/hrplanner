@@ -8,7 +8,7 @@ export const useNavigation = () => {
 			label: 'HOME',
 		},
 		{
-			name: 'Home',
+			name: 'Employees',
 			label: 'EMPLOYEES'
 		},
 		{

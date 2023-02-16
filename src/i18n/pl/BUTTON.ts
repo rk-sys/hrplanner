@@ -10,5 +10,6 @@ export default {
   'button.UPDATE': 'Zaktualizuj',
   'button.RESET_EMAIL': 'Zresetuj hasło',
   'button.CONFIRM_PASSWORD': 'Zatwierdź hasło',
-  'button.CREATE_PROJECT': 'Stwórz nowy projekt'
+  'button.CREATE_PROJECT': 'Stwórz nowy projekt',
+  'button.CREATE_EMPLOYEE': 'Stwórz nowego pracownika'
 }
