@@ -26,9 +26,25 @@ export type TProject = {
   description: string
   employees: string[]
   itTechnologies: ExtendSelectList[]
+  roles: ExtendSelectList[]
+  activities: ExtendSelectList[]
   name: string
   topic: string
   technologieText?: string
+  roleText?: string
+  activitiesText?: string
+  employeeDateEndInProject?: string
+  employeeDateStartInProject?: string
+}
+
+export type ProjectToUpdate = {
+  roleText: string,
+  activitiesText: string,
+  projectUuid: string,
+  roles: ExtendSelectList[]
+  activities: ExtendSelectList[]
+  employeeDateStartInProject: string
+  employeeDateEndInProject: string
 }
 
 export type TProjectError = {
@@ -36,4 +52,10 @@ export type TProjectError = {
   dateEnd: string
   dateStart:string
   name: string
+}
+
+export type TProjectDelete = {
+  client: string,
+  name: string,
+  projectUuid: string
 }

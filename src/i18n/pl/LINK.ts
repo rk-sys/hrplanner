@@ -15,4 +15,9 @@ export default {
   'link.TAGS': 'Tagi',
   'link.en': 'EN',
   'link.pl': 'PL',
+  'link.GENERATE_CV': 'Generuj CV',
+  'link.ADD_PROJECT': 'Dodaj projekt',
+  'link.ADD_EDUCATION': 'Dodaj edukacje',
+  'link.ADD_CERTIFICATE': 'Dodaj certyfikat',
+  'link.DELETE_EMPLOYEE': 'Usuń pracownika'
 }

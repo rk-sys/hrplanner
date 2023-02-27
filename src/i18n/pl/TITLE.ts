@@ -12,11 +12,16 @@ export default {
   'title.NEW_PROJECT': 'Nowy projekt',
   'title.NO': 'No.',
   'title.UPDATE_PROJECT': 'Aktualizacja projektu',
+  'title.ADD_CERTIFICATE': 'Dodaj certyfikat',
   'title.REGISTRATION': 'Rejestracja',
   'title.REMOVE_USER': 'Usuń użytkownika',
   'title.CONFIGURATION_TAG': 'Konfiguracja tagów',
   'title.REMOVE_PROJECT': 'Usuń projekt',
   'title.MY_PROJECTS': 'Projekty',
   'title.MY_EMPLOYEES': 'Pracownicy',
-  'title.CREATE_NEW_EMPLOYEE': 'Nowy pracownik'
+  'title.CREATE_NEW_EMPLOYEE': 'Nowy pracownik',
+  'title.REMOVE_EMPLOYEE': 'Usuń pracownika',
+  'title.REMOVE_CERTIFICATE': 'Usuń certyfikat',
+  'title.ADD_EDUCATION': 'Dodaj edukację',
+  'title.REMOVE_EDUCATION': 'Usuń szkołę',
 }

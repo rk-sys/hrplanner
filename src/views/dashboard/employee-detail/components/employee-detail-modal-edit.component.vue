@@ -1,27 +1,24 @@
 <script setup lang="ts">
-import { PropType } from 'vue';
+import { PropType } from 'vue'
+import cButton from '@/components/form/button/button.component.vue'
 import cModal from '@/components/modal/modal.component.vue'
 import cInput from '@/components/form/input/input.component.vue'
-import cButton from '@/components/form/button/button.component.vue'
 import cExtendSelect from '@/components/form/extend-select/extend-select.component.vue'
 import cSelect from '@/components/form/select/select.component.vue'
 import { TProject } from '@/store/projects/projects.types'
-import { ExtendSelectList } from '@/components/form/extend-select/extend-select.types'
-import { TEmployees } from "@/store/employees/employees.types";
+import { ExtendSelectList } from "@/components/form/extend-select/extend-select.types";
+import { TEmployeeForm } from "@/store/employee-detail/employee-detail.types";
 
-const emit = defineEmits(['closeModal', 'createEmployee', 'checkTechnologies', 'checkLanguages', 'checkProjects', 'checkProfession', 'checkLevel'])
+const emits = defineEmits(['closeModal', 'checkLanguages', 'checkProfession','checkLevel', 'checkTechnologies','updateEmployee'])
 
 const props = defineProps({
   showModal: {
     type: Boolean,
-    default: false,
+    default: false
   },
   employee: {
-    type: Object as PropType<Partial<TEmployees>>,
+    type: Object as PropType<TEmployeeForm>,
     required: true
-  },
-  errors: {
-    type: Object as PropType<Partial<TEmployees>>,
   },
   technologies: {
     type: Array as PropType<ExtendSelectList[]>,
@@ -39,37 +36,33 @@ const props = defineProps({
     type: Array as PropType<ExtendSelectList[]>,
     default: () => []
   },
-  projects: {
-    type: Array as PropType<ExtendSelectList[]>,
-    default: () => []
+  errors: {
+    type: Object as PropType<Partial<TEmployeeForm>>,
+    required: true
   }
 })
 
+
 const clickedTechnologies = (uuid: string) => {
-  emit('checkTechnologies', uuid)
+  emits('checkTechnologies', uuid)
 }
 
 const clickedLanguages = (uuid: string) => {
-  emit('checkLanguages', uuid)
-}
-
-const clickedProjects = (uuid: string) => {
-  emit('checkProjects', uuid)
+  emits('checkLanguages', uuid)
 }
 
 const clickedProfession = (uuid: string) => {
-  emit('checkProfession', uuid)
+  emits('checkProfession', uuid)
 }
 
 const clickedLevel = (uuid: string) => {
-  emit('checkLevel', uuid)
+  emits('checkLevel', uuid)
 }
-
 </script>
-
 <template>
+
   <c-modal v-if="showModal"
-           title="title.CREATE_NEW_EMPLOYEE"
+           title="title.UPDATE_PROJECT"
            @close-modal="$emit('closeModal')">
 
     <form>
@@ -92,28 +85,28 @@ const clickedLevel = (uuid: string) => {
                  white-bg
                  placeholder="placeholder.BIRTH_DAY" />
 
-        <c-input v-model="employee.experience"
-                 :error-msg="errors?.experience"
+        <c-input v-model="employee.itExperience"
+                 :error-msg="errors?.itExperience"
                  white-bg
                  placeholder="placeholder.EXPERIENCE" />
       </div>
 
       <div class="flex items-center">
-      <c-select v-model="employee.profession"
-                @click-item="clickedProfession"
-                :list="professions"
-                :error-msg="errors?.profession"
-                placeholder="placeholder.CHOOSE_PROFESSION"
-                white-bg
-                data-name="choose-profession" />
+        <c-select v-model="employee.profession"
+                  @click-item="clickedProfession"
+                  :list="professions"
+                  :error-msg="errors?.profession"
+                  placeholder="placeholder.CHOOSE_PROFESSION"
+                  white-bg
+                  data-name="choose-profession" />
 
-      <c-select v-model="employee.level"
-                @click-item="clickedLevel"
-                :list="levels"
-                :error-msg="errors?.level"
-                placeholder="placeholder.CHOOSE_LEVEL"
-                white-bg
-                data-name="choose-level" />
+        <c-select v-model="employee.level"
+                  @click-item="clickedLevel"
+                  :list="levels"
+                  :error-msg="errors?.level"
+                  placeholder="placeholder.CHOOSE_LEVEL"
+                  white-bg
+                  data-name="choose-level" />
       </div>
 
       <div class="flex items-center">
@@ -133,31 +126,19 @@ const clickedLevel = (uuid: string) => {
                          white-bg
                          data-name="choose-language" />
       </div>
-
-      <c-extend-select v-model="employee.projectText"
-                       @click-item="clickedProjects"
-                       :list="projects"
-                       :selected-list="employee.projects"
-                       placeholder="placeholder.CHOOSE_PROJECTS"
-                       white-bg
-                       data-name="choose-employee" />
-
-      <div class="flex justify-between p-3">
-        <c-button button-type="ghost"
-                  button-state="secondary"
-                  class="mr-2"
-                  type="button"
-                  @click="$emit('closeModal')">{{ $t('button.CANCEL') }}</c-button>
-
-        <c-button type="submit"
-                  class="ml-2"
-                  @click.prevent="$emit('createEmployee')">{{ $t('button.CREATE') }}</c-button>
-      </div>
     </form>
 
+    <div class="flex justify-between pb-3">
+      <c-button button-type="ghost"
+                button-state="secondary"
+                class="mr-2"
+                type="button"
+                @click="$emit('closeModal')">{{ $t('button.CANCEL') }}</c-button>
+
+      <c-button type="submit"
+                class="ml-2"
+                @click.prevent="$emit('updateEmployee')">{{ $t('button.UPDATE') }}</c-button>
+    </div>
   </c-modal>
 </template>
 
-<style scoped>
-
-</style>

@@ -1,10 +1,4 @@
 import moment from 'moment';
-import {
-  TConfigurationsItTechnologies,
-  TConfigurationsLevels,
-  TConfigurationsLanguages,
-  TConfigurationsProfessions, TConfigurationsProjects
-} from '@/store/settings/configurations/configurations.type';
 import { ExtendSelectList } from '@/components/form/extend-select/extend-select.types';
 
 export const calculateDifference = (dateStart: string, dateEnd: string) => {
@@ -45,23 +39,6 @@ export const sortAlphabetically = (payload: ExtendSelectList[]): ExtendSelectLis
   })
 }
 
-export const transformToSelectList = (payload: TConfigurationsProjects[] | TConfigurationsItTechnologies[] | TConfigurationsProfessions[] | TConfigurationsLevels[] | TConfigurationsLanguages[]): ExtendSelectList[] => {
-
-  if(Array.isArray(payload) && payload[0]) {
-    const keys = Object.keys(payload[0])
-
-    return payload.map((item) => {
-      return {
-        // @ts-ignore
-        uuid: item[keys[0]],
-        // @ts-ignore
-        label: item[keys[1]]
-      }
-    })
-  }
-  return []
-}
-
 export const checkErrors = (payload: any) => {
   let noError = true
   if(typeof payload === 'object' && payload !== null) {
@@ -73,4 +50,56 @@ export const checkErrors = (payload: any) => {
     }
   }
   return noError
+}
+
+export const calculateAge = (payload: string) => {
+  const start = moment(payload);
+  const now = moment()
+
+  const difference = now.diff(start);
+
+  let timeFrame: any = moment.duration(difference);
+  let time = ''
+
+  if(timeFrame._data.years) {
+    time += timeFrame._data.years === 1 ? '1 Year' : `${timeFrame._data.years} Years`
+  }
+
+  return time ? time : '-';
+}
+
+export const calculateDiffAge = (payload: {start: string, end: string}) => {
+  const start = moment(payload.start);
+  const end = moment(payload.end)
+
+  const difference = end.diff(start);
+
+  let timeFrame: any = moment.duration(difference);
+  let time = ''
+
+  if(timeFrame._data.years) {
+    time += timeFrame._data.years === 1 ? '1 Year' : `${timeFrame._data.years} Years`
+  }
+
+  return time ? time : '1 Month';
+}
+
+export const calculateExperience = (payload: string) => {
+  const start = moment(payload);
+  const now = moment()
+
+  const difference = now.diff(start);
+
+  let timeFrame: any = moment.duration(difference);
+  let time = ''
+
+  if(timeFrame._data.years) {
+    time += timeFrame._data.years === 1 ? '1 Year' : `${timeFrame._data.years} Years`
+  }
+
+  if(timeFrame._data.months) {
+    time += timeFrame._data.months === 1 ? ' 1 Month' : ` ${timeFrame._data.months} Months`
+  }
+
+  return time ? time : '-';
 }

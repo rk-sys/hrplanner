@@ -90,7 +90,7 @@ const isSelected = (payload: string) => {
 </script>
 
 <template>
-  <div class="p-3"
+  <div class="m-3"
        :data-name="`${dataName}-content`"
        @click.stop="isFocus = !isFocus">
 
@@ -102,7 +102,6 @@ const isSelected = (payload: string) => {
              v-bind="$attrs"
              :value="selected"
              @input="$emit('update:modelValue', handleInputChange($event))"
-             @keyup.enter="$emit('createItem', modelValue)"
              :class="{'border-primary-500' : isFocus}"
              class="rounded-sm border-primary h-[42px] py-0 focus:border-primary-500 border bg-transparent px-2 outline-none w-full text-base d-flex items-center disabled:opacity-75"/>
 

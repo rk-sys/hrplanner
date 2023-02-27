@@ -20,4 +20,13 @@ export default {
   'notify.PROJECT_HAS_BEEN_CREATED': 'Projekt został utworzony',
   'notify.EMPLOYEE_HAS_BEEN_CREATED': 'Pracownik został utworzony',
   'notify.PROJECT_HAS_BEEN_UPDATED': 'Projekt został zaktualizowany',
+  'notify.PROJECT_HAS_BEEN_DELETED': 'Projekt został usunięty',
+  'notify.EMPLOYEE_HAS_BEEN_UPDATED': 'Pracownik został zaktualizowany',
+  'notify.EMPLOYEE_HAS_BEEN_DELETED': 'Pracownik został usunięty',
+  'notify.ROLE_HAS_BEEN_DELETED': 'Rola została usunięta',
+  'notify.ROLE_HAS_BEEN_CREATED': 'Rola została utworzona',
+  'notify.ACTIVITIES_HAS_BEEN_DELETED': 'Aktywność została usunięta',
+  'notify.ACTIVITIES_HAS_BEEN_CREATED': 'Aktywność została utworzona',
+  'notify.CERTIFICATE_HAS_BEEN_CREATED': 'Certyfikat został dodany',
+  'notify.EDUCATION_HAS_BEEN_CREATED': 'Edukacja została dodana',
 }

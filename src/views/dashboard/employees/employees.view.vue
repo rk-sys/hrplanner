@@ -7,7 +7,9 @@ import cEmployeesList from '@/views/dashboard/employees/components/employees-lis
 import cEmployeeForm from '@/views/dashboard/employees/components/employee-form.component.vue'
 import { useEmployeeStore } from '@/store/employees/employees.store'
 import { storeToRefs } from 'pinia';
+import { useRouter } from 'vue-router';
 
+const router = useRouter()
 const store = useEmployeeStore()
 
 const {
@@ -24,7 +26,7 @@ const {
   getLevels,
   getProfessions,
   getProjects,
-  checkProjectForm,
+  checkEmployeeForm,
 } = useEmployeeStore()
 
 getEmployees()
@@ -75,10 +77,13 @@ const handleCheckLevel = (payload: string) => {
   checkLevel(payload)
 }
 
-const checkProject = async () => {
-  showModal.value = await checkProjectForm()
+const createEmployee = async () => {
+  showModal.value = !await checkEmployeeForm()
 }
 
+const goToDetail = async (payload: string) => {
+  await router.push({name: 'Employee detail', params: {uuid: payload}})
+}
 </script>
 
 <template>
@@ -104,7 +109,7 @@ const checkProject = async () => {
                      :levels="levels"
                      :professions="professions"
                      :projects="projects"
-                     @create-employee="checkProject"
+                     @create-employee="createEmployee"
                      @check-technologies="checkTechnologies"
                      @check-languages="handleCheckLanguages"
                      @check-projects="handleCheckProjects"
@@ -112,6 +117,7 @@ const checkProject = async () => {
                      @check-level="handleCheckLevel"
                      @close-modal="showModal = false" />
 
-    <c-employees-list :employees="employees" />
+    <c-employees-list :employees="employees"
+                      @go-to-detail="goToDetail" />
   </div>
 </template>
