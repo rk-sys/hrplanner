@@ -38,6 +38,7 @@ export const useLogin = () => {
       try {
         const { data }: { data: TResponseLogin } = await axios.post('/api/auth/signIn', form);
         global.setToken(data.token);
+        global.setUser(data.login);
         notify({ text: t('You are sign in'), type: 'success'})
         await router.push({ name: 'Dashboard' })
       } catch (e) {

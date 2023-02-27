@@ -4,9 +4,15 @@ import { Link } from './navigation.types'
 import { useGlobalStore } from '@/store/global'
 import { useNavigation } from './hook/use-navigation'
 import { ChevronDownIcon, FireIcon, LanguageIcon } from '@heroicons/vue/24/solid'
+import { useRouter } from 'vue-router';
 
+const router = useRouter()
 const { links, profileLinks }: { links: Ref<Link[]>, profileLinks: Ref<Link[]> } = useNavigation();
+
 const store = useGlobalStore();
+const { getUser } = useGlobalStore()
+
+const user = getUser()
 
 const isFocusProfile = ref(false);
 const isFocusLanguage = ref(false);
@@ -25,6 +31,7 @@ const isFocusLanguage = ref(false);
       <router-link v-for="(link, index) in links"
                    :key="index"
                    class="navigation__item p-1.5 px-2 flex items-center mx-1"
+                   :class="{'router-link-active router-link-exact-active' : router.currentRoute.value.fullPath.includes(link.name.toLowerCase())}"
                    :to="{name: link.name}">{{ $t(`link.${link.label}`) }}
 
       </router-link>
@@ -34,7 +41,7 @@ const isFocusLanguage = ref(false);
          @mouseleave="isFocusProfile = false"
          class="navigation__item relative p-1.5 flex items-center whitespace-nowrap">
 
-      <p>Jan Nowak</p>
+      <p>{{ user }}</p>
 
       <chevron-down-icon class="ml-2 w-5 h-5 text-secondary-500 dark:text-white" />
 

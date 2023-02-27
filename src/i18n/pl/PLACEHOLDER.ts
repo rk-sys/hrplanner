@@ -24,4 +24,10 @@ export default {
   'placeholder.EXPERIENCE': 'Doświadczenie - dd/mm/yyyy',
   'placeholder.CHOOSE_PROFESSION': 'Wybierz stanowisko',
   'placeholder.CHOOSE_LEVEL': 'Wybierz poziom',
+  'placeholder.CREATE_ROLE': 'Stwórz role',
+  'placeholder.CREATE_ACTIVITIES': 'Stwórz aktywność',
+  'placeholder.CERTIFICATE_ID': 'Identyfikator certyfikatu',
+  'placeholder.DATE': 'Data - dd/mm/yyyy',
+  'placeholder.NAME': 'Nazwa',
+  'placeholder.SCHOOL_NAME': 'Szkoła'
 }

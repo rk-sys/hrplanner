@@ -4,41 +4,47 @@ import cButton from '@/components/form/button/button.component.vue'
 import cModal from '@/components/modal/modal.component.vue'
 import cInput from '@/components/form/input/input.component.vue'
 import cExtendSelect from '@/components/form/extend-select/extend-select.component.vue'
-import { TProject } from '@/store/projects/projects.types'
-import { ExtendSelectList } from "@/components/form/extend-select/extend-select.types";
-import { TAddProject } from "@/store/employee-detail/employee-detail.types";
+import { TCertificateForm } from '@/store/employee-detail/employee-detail.types';
 
-const emits = defineEmits(['closeModal', 'checkProject', 'addProjects'])
+const emits = defineEmits(['closeModal', 'addCertificate'])
 
 const props = defineProps({
   showModal: {
     type: Boolean,
     default: false
   },
-  projects: {
-    type: Object as PropType<TAddProject>,
+  certificate: {
+    type: Object as PropType<TCertificateForm>,
     required: true
   },
+  errors: {
+    type: Object as PropType<TCertificateForm>,
+    required: true
+  }
 })
-
-const clickedProjects = (uuid: string) => {
-  emits('checkProject', uuid)
-}
 
 </script>
 <template>
 
   <c-modal v-if="showModal"
-           title="title.UPDATE_PROJECT"
+           title="title.ADD_CERTIFICATE"
            @close-modal="$emit('closeModal')">
 
-    <c-extend-select v-model="projects.search"
-                     @click-item="clickedProjects"
-                     :list="projects.availableProjects"
-                     :selected-list="projects.list"
-                     placeholder="placeholder.CHOOSE_PROJECTS"
-                     white-bg
-                     data-name="choose-employee" />
+    {{ certificate }}
+    <c-input v-model="certificate.name"
+             :error-msg="errors.name"
+             white-bg
+             placeholder="placeholder.NAME" />
+
+    <c-input v-model="certificate.dateEnd"
+             :error-msg="errors.dateEnd"
+             white-bg
+             placeholder="placeholder.DATE" />
+
+    <c-input v-model="certificate.idCredential"
+             :error-msg="errors.idCredential"
+             white-bg
+             placeholder="placeholder.CERTIFICATE_ID" />
 
     <div class="flex justify-between pb-3">
       <c-button button-type="ghost"
@@ -49,7 +55,7 @@ const clickedProjects = (uuid: string) => {
 
       <c-button type="submit"
                 class="ml-2"
-                @click.prevent="$emit('addProjects')">{{ $t('button.UPDATE') }}</c-button>
+                @click.prevent="$emit('addCertificate')">{{ $t('button.UPDATE') }}</c-button>
     </div>
   </c-modal>
 </template>

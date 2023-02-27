@@ -4,10 +4,7 @@ import { defineStore } from 'pinia';
 import { notify } from '@kyvg/vue3-notification';
 import { TEmployeeResponse, TEmployees, TEmployeesList } from './employees.types';
 import { useI18n } from 'vue-i18n';
-import {
-  TConfigurationsItTechnologies
-} from '@/store/settings/configurations/configurations.type';
-import { sortAlphabetically, transformToSelectList, checkErrors } from '@/hooks/helpers'
+import { sortAlphabetically, checkErrors } from '@/hooks/helpers'
 import { ExtendSelectList } from '@/components/form/extend-select/extend-select.types';
 import { validateField, isRequired, checkDatePattern } from '@/hooks/use-rules';
 
@@ -18,9 +15,10 @@ export const useEmployeeStore = defineStore('employeeStore', () => {
 
   const employees: Ref<TEmployeesList[]> = ref([])
 
-  const employeesForm: Partial<TEmployees> = reactive({
+  const employeesForm: TEmployees = reactive({
     technologieText: '',
     languageText: '',
+    projectText: '',
     uuid: '',
     active: true,
     firstName: '',
@@ -74,6 +72,8 @@ export const useEmployeeStore = defineStore('employeeStore', () => {
     employeesForm.itTechnologies = []
     employeesForm.languages = []
     employeesForm.experience = ''
+    employeesForm.projects = []
+    employeesForm.projectText = ''
   }
 
   const checkTechnologies = (payload: string) => {
@@ -135,8 +135,8 @@ export const useEmployeeStore = defineStore('employeeStore', () => {
             active: employee.active,
             firstName: employee.firstName,
             lastName: employee.lastName,
-            level: employee.level.levelName,
-            profession: employee.profession.professionName,
+            level: employee.level.label,
+            profession: employee.profession.label,
           }
           )) : []
     } catch (e) {
@@ -144,7 +144,7 @@ export const useEmployeeStore = defineStore('employeeStore', () => {
     }
   }
 
-  const createEmployees = async () => {
+  const createEmployees = async (): Promise<boolean> => {
     try {
       await axios.post('/api/employees', {
         firstName: employeesForm.firstName,
@@ -169,7 +169,7 @@ export const useEmployeeStore = defineStore('employeeStore', () => {
   }
 
 
-  const checkProjectForm = async () => {
+  const checkEmployeeForm = async () => {
     let isCreated: boolean = false
     isRequired(employeesForm.firstName) ? errors.firstName = '' : errors.firstName = 'validation.FIELD_IS_REQUIRED'
     errors.firstName = validateField('name', employeesForm.firstName!, 3)
@@ -183,57 +183,64 @@ export const useEmployeeStore = defineStore('employeeStore', () => {
 
     if(checkErrors(errors)) {
       isCreated = await createEmployees()
+
+      return isCreated
     }
-    return isCreated
   }
 
 
   const getItTechnologies = async (): Promise<void> => {
     try {
-      const { data } : {data: TConfigurationsItTechnologies[]} = await axios.get('/api/ittechnologies')
-      technologies.value = sortAlphabetically(transformToSelectList(data))
+      const { data } : {data: ExtendSelectList[]} = await axios.get('/api/ittechnologies')
+      technologies.value = data
     } catch (e) {
-      notify({ text: t(`${ e.response.data.message}`), type: 'error' })    }
+      notify({ text: t(`${ e.response.data.message}`), type: 'error' })
+    }
   }
 
   const getProfessions = async (): Promise<void> => {
     try {
-      const { data } : {data: TConfigurationsItTechnologies[]} = await axios.get('/api/profession')
-      professions.value = sortAlphabetically(transformToSelectList(data))
+      const { data } : {data: ExtendSelectList[]} = await axios.get('/api/profession')
+      professions.value = data
     } catch (e) {
-      notify({ text: t(`${ e.response.data.message}`), type: 'error' })    }
+      notify({ text: t(`${ e.response.data.message}`), type: 'error' })
+    }
   }
 
   const getLevels = async (): Promise<void> => {
     try {
-      const { data } : {data: TConfigurationsItTechnologies[]} = await axios.get('/api/levels')
-      levels.value = sortAlphabetically(transformToSelectList(data))
+      const { data } : {data: ExtendSelectList[]} = await axios.get('/api/levels')
+      levels.value = data
     } catch (e) {
-      notify({ text: t(`${ e.response.data.message}`), type: 'error' })    }
+      notify({ text: t(`${ e.response.data.message}`), type: 'error' })
+    }
   }
 
   const getLanguages = async (): Promise<void> => {
     try {
-      const { data } : {data: TConfigurationsItTechnologies[]} = await axios.get('/api/languages')
-      languages.value = sortAlphabetically(transformToSelectList(data))
+      const { data } : {data: ExtendSelectList[]} = await axios.get('/api/languages')
+      languages.value = data
     } catch (e) {
-      notify({ text: t(`${ e.response.data.message}`), type: 'error' })    }
+      notify({ text: t(`${ e.response.data.message}`), type: 'error' })
+    }
   }
 
   const getProjects = async (): Promise<void> => {
     try {
-      const { data } : {data: TConfigurationsItTechnologies[]} = await axios.get('/api/projects/projectShortInfo')
-      projects.value = sortAlphabetically(transformToSelectList(data))
+      const { data } : {data: ExtendSelectList[]} = await axios.get('/api/projects/projectShortInfo')
+      projects.value = data
     } catch (e) {
-      notify({ text: t(`${ e.response.data.message}`), type: 'error' })    }
+      notify({ text: t(`${ e.response.data.message}`), type: 'error' })
+    }
   }
+
 
   return {
     checkLanguages,
     checkLevel,
     checkProfession,
     checkProjects,
-    checkProjectForm,
+    checkEmployeeForm,
     checkTechnologies,
     employees,
     employeesForm,

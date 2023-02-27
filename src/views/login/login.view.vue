@@ -23,12 +23,12 @@ const { form, errorMsg, loginUser, goToRegistrationPage } = useLogin();
           <c-input v-model="form.login"
                    white-bg
                    :error-msg="errorMsg.login"
-                   placeholder="login"/>
+                   placeholder="placeholder.LOGIN"/>
 
           <c-input v-model="form.password"
                    white-bg
                    :error-msg="errorMsg.password"
-                   placeholder="password"
+                   placeholder="placeholder.PASSWORD"
                    type="password"/>
 
           <div class="p-3">

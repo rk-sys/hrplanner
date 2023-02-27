@@ -3,23 +3,23 @@ import { PropType } from 'vue'
 import cButton from '@/components/form/button/button.component.vue'
 import cModal from '@/components/modal/modal.component.vue'
 import cInput from '@/components/form/input/input.component.vue'
-import cExtendSelect from '@/components/form/extend-select/extend-select.component.vue'
+import cTextArea from '@/components/form/textarea/text-area.component.vue'
 import { ExtendSelectList } from "@/components/form/extend-select/extend-select.types";
-import { TCertificate } from "@/store/employee-detail/employee-detail.types";
+import { TCertificate, TEducationForm } from "@/store/employee-detail/employee-detail.types";
 
-const emits = defineEmits(['closeModal', 'addCertificate'])
+const emits = defineEmits(['closeModal', 'addEducation'])
 
 const props = defineProps({
   showModal: {
     type: Boolean,
     default: false
   },
-  certificate: {
-    type: Object as PropType<TCertificate>,
+  education: {
+    type: Object as PropType<TEducationForm>,
     required: true
   },
   errors: {
-    type: Object as PropType<TCertificate>,
+    type: Object as PropType<Partial<TEducationForm>>,
     required: true
   }
 })
@@ -28,23 +28,30 @@ const props = defineProps({
 <template>
 
   <c-modal v-if="showModal"
-           title="title.ADD_CERTIFICATE"
+           title="title.ADD_EDUCATION"
            @close-modal="$emit('closeModal')">
 
-    <c-input v-model="certificate.name"
-             :error-msg="errors.name"
+    <c-input v-model="education.schoolName"
+             :error-msg="errors.schoolName"
              white-bg
              placeholder="placeholder.NAME" />
 
-    <c-input v-model="certificate.dateEnd"
+    <c-input v-model="education.dateStart"
+             :error-msg="errors.dateStart"
+             white-bg
+             placeholder="placeholder.DATE_START" />
+
+    <c-input v-model="education.dateEnd"
              :error-msg="errors.dateEnd"
              white-bg
-             placeholder="placeholder.DATE" />
+             placeholder="placeholder.DATE_END" />
 
-    <c-input v-model="certificate.idCredential"
-             :error-msg="errors.idCredential"
-             white-bg
-             placeholder="placeholder.CERTIFICATE_ID" />
+    <c-text-area v-model="education.description"
+                 rows="4"
+                 type="textarea"
+                 white-bg
+                 placeholder="placeholder.DESCRIPTION" />
+
 
     <div class="flex justify-between pb-3">
       <c-button button-type="ghost"
@@ -55,7 +62,7 @@ const props = defineProps({
 
       <c-button type="submit"
                 class="ml-2"
-                @click.prevent="$emit('addCertificate')">{{ $t('button.UPDATE') }}</c-button>
+                @click.prevent="$emit('addEducation')">{{ $t('button.UPDATE') }}</c-button>
     </div>
   </c-modal>
 </template>

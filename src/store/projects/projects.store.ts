@@ -4,8 +4,7 @@ import { defineStore } from 'pinia';
 import { notify } from '@kyvg/vue3-notification';
 import { TProject, TProjects, TProjectError } from './projects.types';
 import { useI18n } from 'vue-i18n';
-import { TConfigurationsItTechnologies } from '@/store/settings/configurations/configurations.type';
-import { sortAlphabetically, transformToSelectList, checkErrors } from '@/hooks/helpers'
+import { sortAlphabetically, checkErrors } from '@/hooks/helpers'
 import { ExtendSelectList } from '@/components/form/extend-select/extend-select.types';
 import { validateField, isRequired, checkDatePattern } from '@/hooks/use-rules';
 
@@ -86,10 +85,11 @@ export const useProjectsStore = defineStore('projectsStore', () => {
 
   const getItTechnologies = async (): Promise<void> => {
     try {
-      const { data } : {data: TConfigurationsItTechnologies[]} = await axios.get('/api/ittechnologies')
-      technologies.value = sortAlphabetically(transformToSelectList(data))
+      const { data } : {data: ExtendSelectList[]} = await axios.get('/api/ittechnologies')
+      technologies.value = data
     } catch (e) {
-      notify({ text: t(`${ e.response.data.message}`), type: 'error' })    }
+      notify({ text: t(`${ e.response.data.message}`), type: 'error' })
+    }
   }
 
   const getProjects = async (payload: string = '') => {

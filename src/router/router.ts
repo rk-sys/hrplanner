@@ -14,6 +14,8 @@ import vNewPassword from '@/views/reset-password/new-password.view.vue'
 import vConfigurations from '@/views/dashboard/settings/configurations/configurations.view.vue'
 import vProjects from '@/views/dashboard/projects/projects.view.vue'
 import vEmployees from '@/views/dashboard/employees/employees.view.vue'
+import vEmployeeDetail from '@/views/dashboard/employee-detail/employee-detail.view.vue'
+
 const availablePages = ['Login', 'Registration', 'Registration code', 'Registration info', 'Reset password', 'New password']
 
 const routes = [
@@ -68,6 +70,11 @@ const routes = [
         component: vEmployees
       },
       {
+        path: 'employees/:uuid',
+        name: 'Employee detail',
+        component: vEmployeeDetail
+      },
+      {
         path: 'projects',
         name: 'Projects',
         component: vProjects
@@ -104,10 +111,14 @@ const router: Router = createRouter({
   routes
 })
 
+const availableUrl = ["/api/registration/create", "/api/auth/signIn", "/api/registration/code",
+  "/api/auth/reset-password-token", "/api/auth/reset-password", "/api/auth/validate-token"]
+
 // @ts-ignore
 axios.interceptors.request.use((config) => {
   const store = useGlobalStore();
-  if (config && config.url && (config.url.includes('signIn') || config.url.includes('registration') || config.url.includes('reset-password'))) {
+
+  if (config && config.url && availableUrl.includes(config.url)) {
     return config;
   } else {
     const token = store.token

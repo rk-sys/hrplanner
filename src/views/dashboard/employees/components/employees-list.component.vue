@@ -39,7 +39,7 @@ const tableHeader: Ref<string[]> = ref(['NO', 'FIRST_NAME', 'LAST_NAME', 'PROFES
         <td class="p-3 truncate w-48">{{employee.level}}</td>
         <td class="p-3 text-center w-52">
           <span class="p-1 no-underline font-semibold rounded-sm text-neutral-600 hover:cursor-pointer hover:bg-primary-500 hover:text-white dark:text-neutral-200"
-                @click="$emit('assignUpdateProject', employee)">{{ $t('link.DETAILS') }}</span>
+                @click="$emit('goToDetail', employee.uuid)">{{ $t('link.DETAILS') }}</span>
         </td>
       </tr>
     </tbody>

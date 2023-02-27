@@ -5,7 +5,7 @@ module.exports = {
 	devServer: {
 		proxy: {
 			[process.env.VITE_APP_SERVER_PROXY]: {
-				target: `${process.env.VITE_APP_SERVER_ADDRESS}:${process.env.VITE_APP_SERVER_PORT}/${process.env.VITE_APP_SERVER_PROXY}`,
+				target: `${process.env.VITE_APP_SERVER_ADDRESS}/${process.env.VITE_APP_SERVER_PROXY}`,
 				changeOrigin: true,
 				pathRewrite: { '/api': '' }
 			}

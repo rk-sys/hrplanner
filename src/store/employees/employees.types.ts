@@ -1,9 +1,3 @@
-import {
-  TConfigurationsItTechnologies,
-  TConfigurationsLanguages,
-  TConfigurationsLevels,
-  TConfigurationsProfessions
-} from '@/store/settings/configurations/configurations.type'
 import { ExtendSelectList } from "@/components/form/extend-select/extend-select.types";
 
 export type TEmployees = {
@@ -19,6 +13,7 @@ export type TEmployees = {
   birthday?: string
   technologieText?: string
   languageText?: string
+  projectText?: string
   experience?: string
 }
 
@@ -27,8 +22,8 @@ export type TEmployeeResponse = {
   active: boolean,
   firstName: string
   lastName: string
-  level: TConfigurationsLevels
-  profession: TConfigurationsProfessions
+  level: ExtendSelectList
+  profession: ExtendSelectList
 }
 
 export type TEmployeesList = {

@@ -134,6 +134,14 @@ const clickedLevel = (uuid: string) => {
                          data-name="choose-language" />
       </div>
 
+      <c-extend-select v-model="employee.projectText"
+                       @click-item="clickedProjects"
+                       :list="projects"
+                       :selected-list="employee.projects"
+                       placeholder="placeholder.CHOOSE_PROJECTS"
+                       white-bg
+                       data-name="choose-employee" />
+
       <div class="flex justify-between p-3">
         <c-button button-type="ghost"
                   button-state="secondary"

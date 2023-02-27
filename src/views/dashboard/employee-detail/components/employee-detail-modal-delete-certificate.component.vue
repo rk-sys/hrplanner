@@ -2,18 +2,17 @@
 import { PropType } from 'vue'
 import cButton from '@/components/form/button/button.component.vue'
 import cModal from '@/components/modal/modal.component.vue'
-import { TProject } from '@/store/projects/projects.types'
-import { TEmployees } from "@/store/employees/employees.types";
+import { TCertificate } from "@/store/employee-detail/employee-detail.types";
 
-const emits = defineEmits(['closeModal', 'deleteEmployee'])
+const emits = defineEmits(['closeModal', 'deleteCertificate'])
 
 const props = defineProps({
   showModal: {
     type: Boolean,
     default: false
   },
-  employee: {
-    type: Object as PropType<Partial<TEmployees>>,
+  certificate: {
+    type: Object as PropType<TCertificate>,
     required: true
   }
 })
@@ -21,11 +20,11 @@ const props = defineProps({
 <template>
 
   <c-modal v-if="showModal"
-           title="title.REMOVE_EMPLOYEE"
+           title="title.REMOVE_CERTIFICATE"
            @close-modal="$emit('closeModal')">
 
     <p class="text-xl py-5 text-center">
-      {{ $t('common.ARE_YOU_SURE_SHOULD_BE_DELETE?', { firstName: employee.firstName, lastName: employee.lastName}) }}
+      {{ $t('common.ARE_YOU_SURE_SHOULD_BE_DELETE?', { firstName: certificate.name }) }}
     </p>
 
     <div class="flex justify-between p-3">
@@ -39,7 +38,7 @@ const props = defineProps({
       <c-button type="submit"
                 class="ml-2"
                 button-state="danger"
-                @click="$emit('deleteEmployee')">{{ $t('button.DELETE') }}</c-button>
+                @click="$emit('deleteCertificate')">{{ $t('button.DELETE') }}</c-button>
     </div>
   </c-modal>
 </template>

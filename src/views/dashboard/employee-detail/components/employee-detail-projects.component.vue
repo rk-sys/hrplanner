@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { PropType } from 'vue'
-import { calculateAge } from '@/hooks/helpers'
 import { TEmployeeDetail } from '@/store/employee-detail/employee-detail.types';
+import { calculateDiffAge } from '@/hooks/helpers'
+const emit = defineEmits(['updateProject', 'deleteProject', 'assignUpdateProject'])
 
 const props = defineProps({
   employee: {
@@ -13,51 +14,63 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="mx-4">
-    <h1 class="text-4xl font-bold">{{employee.firstName}} {{employee.lastName}}</h1>
-    <h2 class="flex items-center uppercase text-lg mt-4 font-medium tracking-widest text-slate-600 dark:text-slate-200">
-      {{employee.profession.professionName}}
-      <span class="dot mx-2 bg-slate-600 dark:bg-slate-200"></span>
-      {{employee.level.levelName}}</h2>
-  </div>
 
-  <div class="mx-4 mt-12">
-    <p class="flex border-b-2 border-primary-500 border-solid justify-between">
-      <span class="py-1.5 px-10 bg-primary-500 font-semibold text-white">{{ $t('common.PERSONAL_INFORMATION') }}</span>
-      <span class="py-1.5 px-4 hover:underline cursor-pointer">{{ $t('common.EDIT') }}</span>
+  <div class="mt-16">
+    <p class="flex border-b-2 border-slate-400 border-solid justify-between">
+      <span class="py-1.5 px-10 bg-slate-400 font-semibold text-white">{{ $t('common.PROJECTS') }}</span>
     </p>
 
-    <div class="mt-4 w-full">
+    <div v-for="(project, index) in employee.projects"
+         :key="`${project.name}-${index}`"
+         class="pb-6 last:border-none mt-6 w-full border-b border-b-gray-200 border-b-solid">
 
-      <span class="block text-lg mb-4">{{ $t('common.AGE') }}:
-        <span class="ml-2 font-semibold">{{ calculateAge(employee.birthday)}}</span>
+      <span class="flex text-lg mb-2">
+        <span class="mr-2">{{ $t('common.PROJECT_CLIENT') }}:</span>
+        <span class="ml-2 font-semibold">{{ project.name }}</span>
+
+        <span class="mr-0 ml-auto">
+          <span class="p-1 no-underline text-sm rounded-sm hover:cursor-pointer hover:underline"
+                @click="$emit('assignUpdateProject', project)">{{ $t('link.UPDATE') }}</span>
+
+          <span class="p-1 no-underline text-sm text-rose-500 rounded-sm hover:cursor-pointer hover:bg-rose-500 hover:text-white"
+                @click="$emit('deleteProject', project)">{{ $t('link.DELETE') }}</span>
+          </span>
       </span>
 
-      <span class="block text-lg mb-4">{{ $t('common.EXPERIENCE') }}:
-        <span class="ml-2 font-semibold">{{ calculateAge(employee.itExperience)}}</span>
+      <span class="block text-lg mb-2">{{ $t('common.PROJECT_NAME') }}:
+        <span class="ml-2 font-semibold">{{ project.name }}</span>
       </span>
 
-      <span class="block text-lg mb-4">{{ $t('common.EMAIL') }}:
-        <span class="ml-2 font-semibold">{{ employee.firstName.toLowerCase() }}@antologic.com</span>
+      <span class="block text-lg mb-2">{{ $t('common.EMPLOYEE_IN_PROJECT_TIME') }}:
+        <span class="ml-2 font-semibold">
+          {{ calculateDiffAge({ start: project.employeeDateStartInProject, end: project.employeeDateEndInProject}) }}
+        </span>
       </span>
 
-      <span class="block text-lg mb-4">
-        <span class="mr-2">{{ $t('common.LANGUAGE') }}:</span>
-        <span v-for="(language, index) in employee.languages"
-              :key="`${index}-language`"
-              class="font-semibold">{{ language.languageName }}, </span>
+      <span v-if="Array.isArray(project.roles) && project.roles.length"
+            class="break-words block text-lg mb-2">{{ $t('common.ROLES') }}:
+
+        <span v-for="(role, index) in project.roles"
+              :key="`${role?.label}-${index}`"
+              class="ml-2 font-semibold">{{ role.label }}</span>
       </span>
 
-      <div class="flex text-md mb-4 flex-wrap items-center">
-        <span class="mr-2">{{ $t('common.TECHNOLOGIES') }}:</span>
-        <span v-for="(it, index) in employee.itTechnologies"
-              :key="`${index}-language`"
-              class="font-semibold p-1 bg-primary-500 m-1 text-white">{{ it.technologyName }} </span>
-      </div>
-    </div>
+      <span v-if="Array.isArray(project.activities) && project.activities.length"
+            class="break-words block text-lg mb-2">{{ $t('common.ACTIVITIES') }}:
 
-    <div class="">
+        <span v-for="(activitie, index) in project.activities"
+              :key="`${activitie.label}-${index}`"
+              class="block ml-2 font-semibold">- {{ activitie.label }}</span>
+      </span>
 
+<!--      <div v-if="Array.isArray(project.itTechnologies) && project.itTechnologies.length"-->
+<!--           class="flex text-md mb-2 flex-wrap items-center">-->
+
+<!--        <span class="mr-2 text-lg">{{ $t('common.TECHNOLOGIES') }}:</span>-->
+<!--        <span v-for="(it, index) in project.itTechnologies"-->
+<!--              :key="`${index}-language`"-->
+<!--              class="rounded-sm flex align-center items-center m-1 bg-slate-400 px-2 text-white text-[15px]">{{ it.label }} </span>-->
+<!--      </div>-->
     </div>
   </div>
 </template>

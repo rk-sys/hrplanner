@@ -3,6 +3,7 @@ import { computed, onBeforeMount, onBeforeUnmount, PropType, ref } from 'vue'
 import { ExtendSelectList } from './extend-select.types'
 import { ChevronDownIcon } from '@heroicons/vue/24/solid'
 import { CheckIcon } from '@heroicons/vue/24/solid'
+import { TrashIcon } from '@heroicons/vue/24/solid'
 
 const props = defineProps({
   modelValue: {
@@ -32,6 +33,10 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  deleteItem: {
+    type: Boolean,
+    default: false
+  }
 })
 
 const emit = defineEmits(['clickItem', 'update:modelValue'])
@@ -94,7 +99,7 @@ const isSelected = (payload: string) => {
 </script>
 
 <template>
-  <div class="p-3"
+  <div class="m-3"
        :data-name="`${dataName}-content`"
        @click.stop="isFocus = !isFocus">
 
@@ -106,7 +111,6 @@ const isSelected = (payload: string) => {
              v-bind="$attrs"
              :value="modelValue"
              @input="$emit('update:modelValue', handleInputChange($event))"
-             @keyup.enter="$emit('createItem', modelValue)"
              :class="{'border-primary-500' : isFocus}"
              class="rounded-sm border-primary h-[42px] py-0 focus:border-primary-500 border bg-transparent px-2 outline-none w-full text-base d-flex items-center disabled:opacity-75"/>
 
@@ -153,6 +157,10 @@ const isSelected = (payload: string) => {
 
             <check-icon v-show="isSelected(item.uuid)"
                         class="w-5 h-5"/>
+
+            <trash-icon v-show="deleteItem"
+                        class="ml-4 w-4 h-4 cursor-pointer text-neutral-400 hover:text-rose-500"
+                        @click="$emit('deleteItem', item.uuid)" />
           </li>
         </template>
 

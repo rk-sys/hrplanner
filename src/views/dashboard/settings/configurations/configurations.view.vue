@@ -8,11 +8,6 @@ import { useLanguages } from '@/store/settings/configurations/languages.store'
 import cExtendSelect from '@/components/form/extend-select/extend-select.component.vue'
 import cListOfTags from '@/components/list-of-tags/list-of-tags.component.vue'
 import cPageTitle from '@/components/page-title/page-title.component.vue'
-import {
-  TConfigurationsItTechnologies,
-  TConfigurationsProfessions,
-  TConfigurationsLanguages,
-  TConfigurationsLevels } from '@/store/settings/configurations/configurations.type';
 
 const storeTechnologies = useItTechnologies()
 const storeProfessions = useProfessions()
@@ -33,6 +28,7 @@ const {
   getLevels,
   createLevel,
   removeLevel } = useLevels()
+
 const {
   getLanguages,
   createLanguage,
